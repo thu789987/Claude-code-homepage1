@@ -3,7 +3,7 @@
 Trang guideline gốc, cộng thêm, khi bấm **"Bật chế độ chỉnh sửa"**:
 - **Sửa chữ** — click vào bất kỳ đoạn text nào (heading, paragraph, list, bảng, callout...) và gõ trực tiếp.
 - **Đổi màu** — chuột phải vào ô màu trong bảng palette (mục II) hoặc vào một callout (khối có icon 🎨 ở góc) để mở bảng chọn màu. Với ô palette, mã hex hiển thị cũng tự cập nhật theo màu mới.
-- **Đổi / thêm ảnh bằng link** — click vào bất kỳ ảnh nào trong Phụ lục (thư viện Canva) để dán link ảnh mới; click vào ô placeholder trống (⊕) để dán link ảnh và biến nó thành ảnh thật.
+- **Đổi / thêm ảnh bằng link** — click vào bất kỳ ảnh nào trong Phụ lục (thư viện Canva) để dán link ảnh mới; click vào ô placeholder trống (⊕) để dán link ảnh và biến nó thành ảnh thật. Link bạn dán vừa dùng để hiển thị ảnh, vừa là nơi card dẫn tới khi người xem click vào (ngoài chế độ chỉnh sửa) — không cần cập nhật link riêng.
 - Nút **"Lưu thay đổi"** — lưu toàn bộ (chữ, màu, ảnh) vào Supabase (Postgres).
 - Nút **"🕘 Lịch sử"** — xem lại các lần lưu trước đó (mỗi lần bấm Lưu tạo 1 bản ghi lịch sử, không ghi đè), và **Khôi phục** về một phiên bản cũ bất kỳ (áp dụng ngay cho mọi người, đồng thời tự tạo thêm 1 bản ghi lịch sử mới cho lần khôi phục đó).
 - Ai mở lại trang (kể cả người khác) sau khi reload sẽ thấy đúng bản đã lưu gần nhất.

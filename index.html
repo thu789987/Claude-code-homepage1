@@ -977,8 +977,10 @@
   var IMAGE_SELECTOR = '.wrap img';
   // Ô placeholder rỗng: click để dán link ảnh, biến thành ảnh thật
   var PLACEHOLDER_SELECTOR = '.wrap .lib-empty';
+  // Card ảnh (link bấm vào): href sẽ được đồng bộ theo đúng link ảnh vừa dán
+  var LINK_SELECTOR = '.wrap .cv-shot';
 
-  var ALL_SELECTOR = [TEXT_SELECTOR, COLOR_SELECTOR, IMAGE_SELECTOR, PLACEHOLDER_SELECTOR].join(',');
+  var ALL_SELECTOR = [TEXT_SELECTOR, COLOR_SELECTOR, IMAGE_SELECTOR, PLACEHOLDER_SELECTOR, LINK_SELECTOR].join(',');
   var EXCLUDE_CLOSEST = '.toc';
 
   var toolbar = document.getElementById('edit-toolbar');
@@ -998,6 +1000,7 @@
     var colorSet = new Set(document.querySelectorAll(COLOR_SELECTOR));
     var imageSet = new Set(document.querySelectorAll(IMAGE_SELECTOR));
     var phSet = new Set(document.querySelectorAll(PLACEHOLDER_SELECTOR));
+    var linkSet = new Set(document.querySelectorAll(LINK_SELECTOR));
     var all = document.querySelectorAll(ALL_SELECTOR);
     var i = 0;
     all.forEach(function(el){
@@ -1007,12 +1010,14 @@
       if (colorSet.has(el)) el.classList.add('et-color');
       if (imageSet.has(el)) el.classList.add('et-image');
       if (phSet.has(el)) el.classList.add('et-placeholder');
+      if (linkSet.has(el)) el.classList.add('et-link');
     });
   }
 
   // ----- lưu / phục hồi từng phần tử -----
   function collectRecord(el){
     if (el.tagName === 'IMG') return { src: el.getAttribute('src') || '' };
+    if (el.classList.contains('et-link')) return { href: el.getAttribute('href') || '' };
     var record = { html: el.innerHTML };
     var styleAttr = el.getAttribute('style');
     if (styleAttr) record.style = styleAttr;
@@ -1023,6 +1028,10 @@
     if (!record) return;
     if (el.tagName === 'IMG') {
       if (record.src) el.setAttribute('src', record.src);
+      return;
+    }
+    if (el.classList.contains('et-link')) {
+      if (typeof record.href === 'string') el.setAttribute('href', record.href);
       return;
     }
     if (typeof record.html === 'string') el.innerHTML = record.html;
@@ -1197,11 +1206,12 @@
     if (cvShot) {
       e.preventDefault();
       var innerImg = cvShot.querySelector('img');
-      var newUrl = prompt('Dán link ảnh mới (URL):', innerImg ? innerImg.src : '');
+      var newUrl = prompt('Dán link (URL) cho ảnh này — ảnh hiển thị và link khi click (ngoài chế độ chỉnh sửa) đều dùng đúng link này:', innerImg ? innerImg.src : '');
       if (newUrl && innerImg) {
         innerImg.setAttribute('src', newUrl);
         innerImg.style.display = '';
         cvShot.classList.remove('cv-broken');
+        cvShot.setAttribute('href', newUrl);
       }
       return;
     }
@@ -1209,10 +1219,12 @@
     var ph = e.target.closest('.et-placeholder');
     if (ph) {
       e.preventDefault();
-      var phUrl = prompt('Dán link ảnh để thay cho ô placeholder này:', '');
+      var phUrl = prompt('Dán link (URL) cho ô placeholder này — ảnh hiển thị và link khi click đều dùng đúng link này:', '');
       if (phUrl) {
-        ph.innerHTML = '<img src="' + phUrl.replace(/"/g, '&quot;') + '" alt="" loading="lazy" ' +
-          'style="width:100%;height:100%;object-fit:cover;display:block;border-radius:8px;">';
+        var safeUrl = phUrl.replace(/"/g, '&quot;');
+        ph.innerHTML = '<a href="' + safeUrl + '" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;">' +
+          '<img src="' + safeUrl + '" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:8px;">' +
+          '</a>';
       }
       return;
     }
