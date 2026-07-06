@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BBCIncorp LinkedIn — Visual & Image Guideline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0D1B2A;
+    --blue:#0B3D8A;
+    --teal:#00C9A7;
+    --volt:#C6FF00;
+    --amber:#FF8A00;
+    --flame:#FF5630;
+    --near-black:#111218;
+    --grey:#F5F5F5;
+    --line:#E4E8EE;
+    --text:#1c2733;
+    --muted:#5b6876;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 22px 80px;}
+
+  /* HEADER */
+  header.doc-head{
+    background:linear-gradient(135deg,var(--navy) 0%,#13294d 100%);
+    color:#fff;
+    padding:54px 22px 48px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.doc-head::after{
+    content:"";
+    position:absolute;
+    right:-60px;top:-60px;
+    width:240px;height:240px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(0,201,167,.28),transparent 70%);
+  }
+  .head-inner{max-width:920px;margin:0 auto;position:relative;z-index:2;}
+  .eyebrow{
+    display:inline-block;
+    font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--teal);
+    border:1px solid rgba(0,201,167,.4);
+    padding:6px 14px;border-radius:30px;
+    margin-bottom:20px;
+  }
+  header.doc-head h1{
+    font-size:38px;font-weight:900;line-height:1.15;margin:0 0 12px;letter-spacing:-.5px;
+  }
+  header.doc-head .subtitle{
+    font-size:17px;font-weight:400;color:#b9c6d6;font-style:italic;max-width:640px;margin:0;
+  }
+  .accent-bar{height:5px;width:90px;background:var(--amber);border-radius:4px;margin-top:24px;}
+
+  /* TOC */
+  .toc{
+    background:var(--grey);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:26px 30px;
+    margin:38px 0 10px;
+  }
+  .toc h2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0 0 16px;font-weight:700;}
+  .toc ol{margin:0;padding-left:0;list-style:none;counter-reset:toc;}
+  .toc li{counter-increment:toc;margin:0;}
+  .toc a{
+    display:flex;align-items:baseline;gap:12px;
+    text-decoration:none;color:var(--navy);font-weight:600;font-size:15.5px;
+    padding:9px 8px;border-radius:8px;transition:background .15s,color .15s;
+  }
+  .toc a:hover{background:#fff;color:var(--blue);}
+  .toc a::before{
+    content:counter(toc,upper-roman);
+    color:var(--teal);font-weight:800;min-width:38px;font-size:13px;letter-spacing:.5px;
+  }
+
+  /* SECTIONS */
+  section{padding-top:46px;scroll-margin-top:20px;}
+  .sec-label{
+    display:inline-block;font-size:12px;font-weight:800;letter-spacing:1.5px;
+    color:var(--teal);text-transform:uppercase;margin-bottom:8px;
+  }
+  h2.sec-title{
+    font-size:27px;font-weight:800;color:var(--navy);margin:0 0 6px;letter-spacing:-.4px;line-height:1.2;
+  }
+  h3{font-size:18px;font-weight:700;color:var(--navy);margin:26px 0 10px;}
+  p{margin:12px 0;}
+  strong{color:var(--navy);font-weight:700;}
+  .muted{color:var(--muted);}
+
+  .divider{height:1px;background:var(--line);border:0;margin:46px 0 0;}
+
+  /* CALLOUT */
+  .callout{
+    border-left:4px solid var(--amber);
+    background:#fffaf3;
+    padding:16px 20px;border-radius:0 10px 10px 0;margin:18px 0;
+  }
+  .callout.teal{border-left-color:var(--teal);background:#f1fffb;}
+  .callout.navy{border-left-color:var(--navy);background:#f4f7fb;}
+
+  /* TABLES */
+  table{
+    width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px;
+    border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  th{
+    background:var(--navy);color:#fff;text-align:left;padding:12px 16px;font-weight:600;font-size:13.5px;
+  }
+  td{padding:12px 16px;border-top:1px solid var(--line);vertical-align:top;}
+  tbody tr:nth-child(even){background:#fafbfc;}
+  td strong{color:var(--blue);}
+
+  /* COLOR SWATCHES */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin:20px 0;}
+  .swatch{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;}
+  .swatch .chip{height:78px;display:flex;align-items:flex-end;padding:8px 10px;}
+  .swatch .meta{padding:11px 13px;}
+  .swatch .name{font-size:13px;font-weight:700;color:var(--navy);display:block;}
+  .swatch .role{font-size:11.5px;color:var(--muted);display:block;margin-top:2px;}
+  .swatch .hex{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;font-weight:600;color:#fff;background:rgba(0,0,0,.28);
+    padding:2px 7px;border-radius:5px;
+  }
+
+  /* TRACK CARDS */
+  .track{
+    border:1px solid var(--line);border-radius:16px;padding:0;margin:24px 0;overflow:hidden;
+    box-shadow:0 1px 3px rgba(13,27,42,.04);
+  }
+  .track-head{padding:18px 24px;display:flex;align-items:center;gap:14px;color:#fff;}
+  .track-num{
+    background:rgba(255,255,255,.18);border-radius:9px;min-width:38px;height:38px;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;
+  }
+  .track-head h3{margin:0;color:#fff;font-size:18px;}
+  .track-head .ref{font-size:12px;color:rgba(255,255,255,.78);font-weight:400;font-style:italic;display:block;margin-top:2px;}
+
+  /* track body = 2 cols: mockup + content */
+  .track-body{padding:20px 24px 24px;display:flex;gap:26px;align-items:flex-start;}
+  .mockup-col{flex:0 0 300px;position:sticky;top:14px;}
+  .content-col{flex:1 1 auto;min-width:0;}
+  .content-col h4{font-size:13px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);margin:18px 0 8px;font-weight:700;}
+  .content-col h4:first-child{margin-top:0;}
+  @media (max-width:760px){
+    .track-body{flex-direction:column;}
+    .mockup-col{flex:1 1 auto;width:100%;max-width:340px;margin:0 auto;position:static;}
+  }
+
+  ul{margin:10px 0;padding-left:22px;}
+  li{margin:6px 0;}
+  .concept{
+    background:var(--navy);color:#dfe8f2;border-radius:10px;padding:16px 20px;margin:14px 0;font-size:14.5px;
+  }
+  .concept b{color:#fff;}
+  .avoid{color:#b0341d;}
+  .avoid strong{color:#b0341d;}
+
+  /* ===== MOCKUP DEMOS ===== */
+  .mock-label{
+    font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+    color:var(--muted);text-align:center;margin-bottom:8px;
+  }
+  .post{
+    aspect-ratio:1/1;width:100%;border-radius:14px;overflow:hidden;position:relative;
+    box-shadow:0 6px 22px rgba(13,27,42,.16);font-family:'Inter',sans-serif;
+    display:flex;flex-direction:column;
+  }
+  .post *{box-sizing:border-box;}
+  .post .logo{
+    font-size:11px;font-weight:800;letter-spacing:.3px;display:flex;align-items:center;gap:5px;
+  }
+  .post .logo .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);display:inline-block;}
+
+  /* M1 Thought Leadership */
+  .m1{background:var(--navy);padding:26px 24px;justify-content:center;}
+  .m1 .line{width:34px;height:3px;background:var(--teal);border-radius:2px;margin-bottom:18px;}
+  .m1 .q{color:#fff;font-size:21px;font-weight:800;line-height:1.25;letter-spacing:-.3px;}
+  .m1 .sub{color:#8fa3b8;font-size:12.5px;margin-top:12px;font-weight:500;}
+  .m1 .logo{color:#fff;margin-top:auto;padding-top:20px;}
+
+  /* M2 Ecosystem co-brand */
+  .m2{background:var(--grey);padding:0;}
+  .m2 .topbar{padding:14px 18px 0;font-size:10.5px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;}
+  .m2 .split{flex:1;display:flex;align-items:center;}
+  .m2 .half{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;}
+  .m2 .half .nm{font-size:15px;font-weight:800;color:var(--navy);}
+  .m2 .half .nm.p{color:var(--blue);}
+  .m2 .half .badge{font-size:9px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;}
+  .m2 .vline{width:1px;align-self:stretch;background:#d6dbe2;margin:34px 0;}
+
+  /* M3 Event photo + bar */
+  .m3{background:#1a2735;}
+  .m3 .photo{flex:1;position:relative;overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 38%,rgba(0,201,167,.42),transparent 42%),
+      radial-gradient(circle at 72% 30%,rgba(244,162,97,.30),transparent 40%),
+      linear-gradient(160deg,#22405e,#0e1d30);}
+  .m3 .stage{position:absolute;left:50%;bottom:18%;transform:translateX(-50%);width:46%;height:30%;
+    background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0));border-radius:8px 8px 0 0;}
+  .m3 .figure{position:absolute;left:50%;bottom:18%;transform:translateX(-50%);width:14px;height:34px;
+    background:#0c1622;border-radius:7px 7px 0 0;}
+  .m3 .tag{position:absolute;top:14px;left:14px;background:rgba(0,201,167,.92);color:#06231d;
+    font-size:9.5px;font-weight:800;letter-spacing:.6px;padding:4px 9px;border-radius:20px;text-transform:uppercase;}
+  .m3 .bar{background:var(--navy);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;}
+  .m3 .bar .logo{color:#fff;}
+  .m3 .bar .ev{color:#9fb3c8;font-size:11px;font-weight:600;}
+
+  /* M4 Product launch */
+  .m4{background:var(--near-black);padding:26px 24px;justify-content:center;position:relative;}
+  .m4::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 80% 85%,rgba(0,201,167,.22),transparent 45%),
+              radial-gradient(circle at 15% 20%,rgba(11,61,138,.30),transparent 45%);}
+  .m4 .inner{position:relative;z-index:2;}
+  .m4 .soon{color:var(--teal);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;}
+  .m4 .pn{color:#fff;font-size:40px;font-weight:900;letter-spacing:-1px;margin:8px 0 4px;line-height:1;}
+  .m4 .desc{color:#aab6c4;font-size:12.5px;font-weight:500;}
+  .m4 .logo{color:#fff;margin-top:24px;}
+
+  /* M5 Educational carousel */
+  .m5{background:#fff;padding:24px 22px;justify-content:space-between;border:1px solid var(--line);}
+  .m5 .ctop{font-size:10px;font-weight:800;letter-spacing:1.4px;color:var(--muted);text-transform:uppercase;display:flex;justify-content:space-between;}
+  .m5 .big{display:flex;align-items:flex-start;gap:10px;margin-top:8px;}
+  .m5 .num{font-size:58px;font-weight:900;color:var(--amber);line-height:.85;letter-spacing:-2px;}
+  .m5 .htxt{font-size:19px;font-weight:800;color:var(--navy);line-height:1.18;letter-spacing:-.3px;padding-top:4px;}
+  .m5 .cta{display:flex;align-items:center;justify-content:space-between;margin-top:auto;}
+  .m5 .swipe{font-size:12px;font-weight:700;color:var(--teal);}
+  .m5 .logo{color:var(--navy);}
+
+  /* M6 Campaign */
+  .m6{background:linear-gradient(150deg,var(--navy) 0%,#0a5a6b 60%,var(--teal) 130%);padding:26px 24px;justify-content:center;position:relative;overflow:hidden;}
+  .m6 svg{position:absolute;inset:0;width:100%;height:100%;opacity:.5;}
+  .m6 .inner{position:relative;z-index:2;}
+  .m6 .big{color:#fff;font-size:32px;font-weight:900;letter-spacing:-1px;line-height:1;}
+  .m6 .mission{color:#d6fff6;font-size:13px;font-weight:600;margin-top:10px;line-height:1.35;}
+  .m6 .logo{color:#fff;margin-top:22px;}
+
+  /* M7 Social proof */
+  .m7{background:var(--navy);padding:24px 24px;justify-content:center;position:relative;}
+  .m7 .mark{font-family:Georgia,serif;font-size:80px;line-height:.7;color:var(--amber);font-weight:700;height:42px;}
+  .m7 .q{color:#fff;font-size:17px;font-weight:700;line-height:1.35;margin-top:6px;}
+  .m7 .aline{width:30px;height:3px;background:var(--amber);border-radius:2px;margin:16px 0 10px;}
+  .m7 .who{color:#9fb3c8;font-size:12px;font-weight:600;}
+  .m7 .who b{color:#fff;}
+  .m7 .logo{color:#fff;margin-top:auto;padding-top:18px;}
+
+  .sub{border:1px solid var(--line);border-radius:11px;padding:14px 18px;margin:12px 0;background:#fafbfc;}
+  .sub .tag{font-weight:700;color:var(--blue);font-size:14px;}
+
+  /* CANVA PRODUCTION GALLERY */
+  .canva-gallery{margin:4px 24px 24px;padding-top:18px;border-top:1px dashed var(--line);}
+  .glabel{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+  .glabel .badge{background:#e8f0ff;color:var(--blue);padding:2px 8px;border-radius:20px;margin-left:6px;font-size:10px;letter-spacing:.4px;}
+  .canva-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  .cv-shot{position:relative;display:block;aspect-ratio:1/1;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--navy);transition:transform .15s,box-shadow .15s;}
+  .cv-shot:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(13,27,42,.18);}
+  .cv-shot img{width:100%;height:100%;object-fit:cover;display:block;}
+  .cv-shot .cv-n{position:absolute;top:8px;left:10px;z-index:3;background:rgba(13,27,42,.72);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;letter-spacing:.5px;}
+  .cv-fallback{display:none;position:absolute;inset:0;flex-direction:column;gap:6px;align-items:center;justify-content:center;text-align:center;padding:14px;color:#bfeede;font-size:11px;font-weight:700;line-height:1.45;}
+  .cv-broken .cv-fallback{display:flex;}
+  @media (max-width:560px){.canva-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* APPENDIX IMAGE LIBRARY */
+  .appendix-intro{background:#f4f7fb;border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:18px 0 8px;font-size:14px;}
+  .appendix-intro strong{color:var(--navy);}
+  .lib-track{margin:34px 0;}
+  .lib-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--line);}
+  .lib-badge{min-width:30px;height:30px;border-radius:8px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;}
+  .lib-head h3{margin:0;font-size:16.5px;color:var(--navy);}
+  .lib-head .meta{margin-left:auto;font-size:11.5px;color:var(--muted);font-weight:600;text-align:right;}
+  .lib-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .lib-empty{border:1.5px dashed #cfd6df;border-radius:10px;aspect-ratio:1/1;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:11px;font-weight:600;padding:12px;background:#fafbfc;}
+  .lib-empty .pa{font-size:18px;opacity:.5;}
+  @media (max-width:560px){.lib-grid{grid-template-columns:repeat(2,1fr);}}
+
+  footer{margin-top:54px;padding-top:26px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted);font-style:italic;text-align:center;}
+
+  @media (max-width:640px){
+    header.doc-head h1{font-size:28px;}
+    .wrap{padding:0 16px 60px;}
+    table{font-size:13px;}
+    th,td{padding:9px 11px;}
+    h2.sec-title{font-size:23px;}
+  }
+
+  /* ===== LIVE EDIT FEATURE ===== */
+  body.edit-mode [data-eid]{
+    outline:1.5px dashed rgba(11,61,138,.4);outline-offset:3px;border-radius:4px;
+  }
+  body.edit-mode [data-eid]:hover{outline-color:var(--blue);}
+  body.edit-mode .et-text{cursor:text;}
+  body.edit-mode .et-text:focus{outline:2px solid var(--teal);background:rgba(0,201,167,.07);}
+
+  /* color-editable elements: right-click to pick a color */
+  body.edit-mode .et-color{position:relative;cursor:pointer;}
+  body.edit-mode .et-color::before{
+    content:"🎨";position:absolute;top:4px;right:4px;font-size:12px;
+    width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.92);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 1px 4px rgba(0,0,0,.25);pointer-events:none;
+  }
+
+  /* images: click to replace via URL */
+  body.edit-mode .et-image{cursor:pointer;}
+  body.edit-mode .cv-shot::after{
+    content:"🔗 Đổi ảnh (click)";
+    position:absolute;inset:auto 0 0 0;text-align:center;
+    background:rgba(13,27,42,.82);color:#fff;font-size:10.5px;font-weight:700;
+    padding:5px 0;letter-spacing:.3px;
+  }
+
+  /* empty placeholder boxes: click to add an image via URL */
+  body.edit-mode .et-placeholder{position:relative;cursor:pointer;}
+  body.edit-mode .et-placeholder::after{
+    content:"+ Dán link ảnh";
+    position:absolute;inset:auto 0 0 0;text-align:center;
+    background:rgba(11,61,138,.88);color:#fff;font-size:10.5px;font-weight:700;
+    padding:5px 0;letter-spacing:.3px;
+  }
+  .edit-toolbar{
+    position:fixed;right:18px;bottom:18px;z-index:9999;
+    background:#fff;border:1px solid var(--line);border-radius:12px;
+    box-shadow:0 8px 28px rgba(13,27,42,.2);
+    padding:10px 14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;max-width:calc(100vw - 36px);
+    font-family:'Inter',sans-serif;
+  }
+  .edit-toolbar button{
+    border:none;border-radius:8px;padding:9px 15px;font-weight:700;font-size:13px;
+    cursor:pointer;background:var(--navy);color:#fff;font-family:inherit;
+  }
+  .edit-toolbar button:hover{opacity:.85;}
+  .edit-toolbar button.active{background:var(--teal);color:#06231d;}
+  .edit-toolbar #btn-save{background:var(--amber);color:#3a2205;}
+  .edit-status{color:var(--muted);font-size:12px;max-width:230px;line-height:1.4;}
+  @media (max-width:640px){.edit-toolbar{left:12px;right:12px;bottom:12px;}}
+
+  /* ===== HISTORY PANEL ===== */
+  .history-overlay{
+    position:fixed;inset:0;background:rgba(13,27,42,.55);z-index:10000;
+    display:none;align-items:center;justify-content:center;padding:24px;
+  }
+  .history-overlay.open{display:flex;}
+  .history-panel{
+    background:#fff;border-radius:14px;max-width:520px;width:100%;max-height:80vh;
+    display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(13,27,42,.35);
+    font-family:'Inter',sans-serif;
+  }
+  .history-panel header{
+    padding:18px 22px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .history-panel header h4{margin:0;font-size:16px;color:var(--navy);}
+  .history-panel .hp-close{border:none;background:none;font-size:20px;cursor:pointer;color:var(--muted);line-height:1;padding:2px 6px;}
+  .history-list{overflow-y:auto;padding:6px 22px 22px;}
+  .history-item{
+    border-bottom:1px solid var(--line);padding:12px 0;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+  }
+  .history-item:last-child{border-bottom:none;}
+  .history-meta .hi-time{font-weight:700;color:var(--navy);font-size:13.5px;display:block;}
+  .history-meta .hi-note{color:var(--muted);font-size:12px;margin-top:2px;display:block;}
+  .history-item button{
+    border:none;border-radius:8px;padding:7px 12px;font-size:12.5px;font-weight:700;
+    background:var(--blue);color:#fff;cursor:pointer;white-space:nowrap;font-family:inherit;
+  }
+  .history-item button:hover{opacity:.85;}
+  .history-empty{color:var(--muted);font-size:13.5px;padding:20px 0;text-align:center;}
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <div class="head-inner">
+    <span class="eyebrow">Internal Brand Guide · LinkedIn</span>
+    <h1>BBCIncorp LinkedIn<br>Visual &amp; Image Guideline</h1>
+    <p class="subtitle">"Tech-Driven Corporate Clarity" — từ nhịp Airwallex đến giọng riêng BBCIncorp</p>
+    <div class="accent-bar"></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- TABLE OF CONTENTS -->
+  <nav class="toc">
+    <h2>Mục lục</h2>
+    <ol>
+      <li><a href="#section-1">Định vị phong cách tổng thể</a></li>
+      <li><a href="#section-2">Hệ thống màu sắc &amp; Typography "có nhịp"</a></li>
+      <li><a href="#section-3">Các tuyến nội dung &amp; hướng visual (có demo mockup)</a></li>
+      <li><a href="#section-4">Quy tắc "nhịp" chung cho toàn bộ feed</a></li>
+      <li><a href="#section-5">Quick Reference — Format theo Post Type</a></li>
+      <li><a href="#appendix">Phụ lục — Thư viện hình ảnh demo (Canva)</a></li>
+    </ol>
+  </nav>
+
+  <!-- SECTION I -->
+  <section id="section-1">
+    <span class="sec-label">Phần I</span>
+    <h2 class="sec-title">Định vị phong cách tổng thể</h2>
+
+    <div class="callout">
+      <strong>Vấn đề cũ:</strong> Visual BBCIncorp đơn sắc, đơn điệu — dominant blue, layout corporate truyền thống, thiếu năng lượng "tech pulse".
+    </div>
+
+    <h3>Hướng mới — "Structured Energy"</h3>
+    <p>BBCIncorp không phải là một fintech thuần, mà là một brand tư vấn business formation &amp; compliance có <strong>nền tảng công nghệ</strong>. Visual cần truyền cảm giác: <em>đáng tin cậy nhưng đang chạy — không đứng yên.</em></p>
+
+    <h3>Nguyên tắc nhịp học từ Airwallex, nhưng phiên bản BBCIncorp</h3>
+    <table>
+      <thead>
+        <tr><th>Airwallex Rhythm</th><th>BBCIncorp Adaptation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Đen tối, bold, high-contrast</td><td><strong>Xanh đậm + trắng + accent cam/xanh lá</strong> (không clone all-black)</td></tr>
+        <tr><td>Minimal text, type-led</td><td><strong>Typography mạnh + icon/illustration system</strong></td></tr>
+        <tr><td>Dark mode khi launch</td><td><strong>Dark mode chỉ cho tuyến Product &amp; Campaign</strong></td></tr>
+        <tr><td>No face needed</td><td><strong>Con người nếu có = action shot, không phải pose</strong></td></tr>
+        <tr><td>Ecosystem repost</td><td><strong>BBCIncorp ecosystem nhỏ hơn → cần xây chủ động hơn</strong></td></tr>
+      </tbody>
+    </table>
+    <hr class="divider">
+  </section>
+
+  <!-- SECTION II -->
+  <section id="section-2">
+    <span class="sec-label">Phần II</span>
+    <h2 class="sec-title">Hệ thống màu sắc &amp; Typography "có nhịp"</h2>
+    <p>Màu chủ đạo cần mở rộng từ "1 màu" thành một palette linh hoạt:</p>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="chip" style="background:#0D1B2A"><span class="hex">#0D1B2A</span></div>
+        <div class="meta"><span class="name">Deep Navy</span><span class="role">Primary · backbone</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#0B3D8A"><span class="hex">#0B3D8A</span></div>
+        <div class="meta"><span class="name">Deep Blue</span><span class="role">Primary alt · backbone</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#FFFFFF;border-bottom:1px solid #E4E8EE"><span class="hex" style="background:rgba(0,0,0,.5)">#FFFFFF</span></div>
+        <div class="meta"><span class="name">White</span><span class="role">Secondary · breathing space</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#F5F5F5;border-bottom:1px solid #E4E8EE"><span class="hex" style="background:rgba(0,0,0,.5)">#F5F5F5</span></div>
+        <div class="meta"><span class="name">Light Grey</span><span class="role">Secondary · breathing space</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#00C9A7"><span class="hex">#00C9A7</span></div>
+        <div class="meta"><span class="name">Electric Teal</span><span class="role">Accent · tech pulse</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#C6FF00"><span class="hex" style="background:rgba(0,0,0,.55)">#C6FF00</span></div>
+        <div class="meta"><span class="name">Volt Green</span><span class="role">Accent · tech pulse</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#FF8A00"><span class="hex">#FF8A00</span></div>
+        <div class="meta"><span class="name">Warm Gold / Amber</span><span class="role">Accent · trust · CTA</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#FF5630"><span class="hex">#FF5630</span></div>
+        <div class="meta"><span class="name">Flame Red</span><span class="role">Accent · alert / urgency</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#111218"><span class="hex">#111218</span></div>
+        <div class="meta"><span class="name">Near-Black</span><span class="role">Dark mode surface</span></div>
+      </div>
+    </div>
+
+    <div class="callout teal">
+      <strong>Lưu ý dùng accent:</strong> Electric Teal &amp; Volt Green dùng <strong>tiết kiệm</strong> để tạo nhịp. Amber dùng cho CTA và highlight số liệu.
+    </div>
+
+    <h3>Primary Color</h3>
+    <p class="muted" style="font-size:14px;">Bảng sắc độ (tint/shade) mở rộng từ màu chủ đạo <strong>#00A6FF</strong> — dùng cho UI, biểu đồ, trạng thái hover/active cần nhất quán theo tông.</p>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="chip" style="background:#CCEDFF"><span class="hex" style="background:rgba(0,0,0,.55)">#CCEDFF</span></div>
+        <div class="meta"><span class="name">100</span><span class="role">Xanh rất nhạt, gần trắng</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#99DBFF"><span class="hex" style="background:rgba(0,0,0,.5)">#99DBFF</span></div>
+        <div class="meta"><span class="name">200</span><span class="role">Xanh nhạt</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#66C9FF"><span class="hex" style="background:rgba(0,0,0,.4)">#66C9FF</span></div>
+        <div class="meta"><span class="name">300</span><span class="role">Xanh nhạt vừa</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#33B8FF"><span class="hex">#33B8FF</span></div>
+        <div class="meta"><span class="name">400</span><span class="role">Xanh trung bình sáng</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#00A6FF"><span class="hex">#00A6FF</span></div>
+        <div class="meta"><span class="name">500</span><span class="role">Màu gốc (base)</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#0085CC"><span class="hex">#0085CC</span></div>
+        <div class="meta"><span class="name">600</span><span class="role">Xanh đậm vừa</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#006AA3"><span class="hex">#006AA3</span></div>
+        <div class="meta"><span class="name">700</span><span class="role">Xanh đậm</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#004970"><span class="hex">#004970</span></div>
+        <div class="meta"><span class="name">800</span><span class="role">Navy đậm</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#00283D"><span class="hex">#00283D</span></div>
+        <div class="meta"><span class="name">900</span><span class="role">Navy rất đậm, gần đen</span></div>
+      </div>
+    </div>
+
+    <h3>Typography</h3>
+    <ul>
+      <li><strong>Headline:</strong> Sans-serif bold, condensed (Inter Bold / Sora Bold / Space Grotesk)</li>
+      <li><strong>Body/sub:</strong> Regular weight cùng font — không quá 2 font trong 1 post</li>
+      <li><strong>Nguyên tắc nhịp:</strong> Headline chiếm ít nhất 40% diện tích visual — chữ TO, rõ, đọc được khi scroll nhanh trên feed</li>
+    </ul>
+    <hr class="divider">
+  </section>
+
+  <!-- SECTION III -->
+  <section id="section-3">
+    <span class="sec-label">Phần III</span>
+    <h2 class="sec-title">Các tuyến nội dung &amp; hướng visual cụ thể</h2>
+    <p class="muted" style="font-size:14px;">Mỗi tuyến kèm một <strong>demo mockup minh họa</strong> (dựng bằng đúng palette &amp; typography) để dễ hình dung. Đây là concept định hướng — design team triển khai thành template thật khi production.</p>
+
+    <!-- TRACK 1 -->
+    <div class="track t1">
+      <div class="track-head" style="background:linear-gradient(120deg,#0D1B2A,#1c3a5e)">
+        <span class="track-num">1</span>
+        <div><h3>Thought Leadership / Insight</h3>
+        <span class="ref">Airwallex ref: "Your moat is the infrastructure"</span></div>
+      </div>
+      <div class="track-body">
+        <div class="mockup-col">
+          <div class="mock-label">Demo mockup</div>
+          <div class="post m1">
+            <div class="line"></div>
+            <div class="q">Your company structure is your first strategic decision.</div>
+            <div class="sub">Most founders get it wrong.</div>
+            <div class="logo"><span class="dot"></span>BBCIncorp</div>
+          </div>
+        </div>
+        <div class="content-col">
+          <h4>Mục tiêu</h4>
+          <p>Định vị BBCIncorp là brand có tư duy dẫn đầu về business formation, compliance &amp; fintech ecosystem.</p>
+          <h4>Visual Direction</h4>
+          <ul>
+            <li><strong>Background:</strong> Navy đậm/gần đen, grain texture nhẹ (không phẳng lỳ)</li>
+            <li><strong>Layout:</strong> Quote/Statement lớn chiếm trung tâm — typography as the hero</li>
+            <li><strong>Accent:</strong> 1 đường line mảnh hoặc dot pattern ở góc, màu Electric Teal</li>
+            <li><strong>Icon:</strong> Logo + có thể kèm icon ngành (globe, circuit node, building)</li>
+            <li class="avoid"><strong>Tránh:</strong> Charts rườm rà, stock corporate (người bắt tay, người họp)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 2 -->
+    <div class="track t2">
+      <div class="track-head" style="background:linear-gradient(120deg,#0B3D8A,#1456b8)">
+        <span class="track-num">2</span>
+        <div><h3>Ecosystem Repost / Live with Brand</h3>
+        <span class="ref">Airwallex ref: Repost T:0 launch, Advisory Council</span></div>
+      </div>
+      <div class="track-body">
+        <div class="mockup-col">
+          <div class="mock-label">Demo mockup · co-brand card</div>
+          <div class="post m2">
+            <div class="topbar">In partnership with</div>
+            <div class="split">
+              <div class="half"><span class="nm p">BBCIncorp</span><span class="badge">Incorporation</span></div>
+              <div class="vline"></div>
+              <div class="half"><span class="nm">PARTNER</span><span class="badge">Legal · Accounting</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-col">
+          <h4>Mục tiêu</h4>
+          <p>Cho thấy BBCIncorp là một phần của hệ sinh thái rộng hơn — không isolated, đang hoạt động.</p>
+          <h4>Visual Direction</h4>
+          <ul>
+            <li><strong>Repost:</strong> Không cần visual mới — caption phải có <strong>góc nhìn riêng</strong> (1–2 câu + hashtag)</li>
+            <li><strong>Co-brand card:</strong> nền trắng/xanh nhạt, logo BBCIncorp cùng logo partner, layout 50/50</li>
+            <li><strong>Nguồn repost:</strong> partners luật, accounting firms, clients thành công, fintech media (Fintech News, e27, DealStreetAsia)</li>
+            <li><strong>Tần suất:</strong> 1 post/tuần dạng repost có góc nhìn thêm</li>
+          </ul>
+          <div class="callout navy" style="margin-bottom:0"><strong>Visual note:</strong> Co-brand card nền xám nhạt <code>#F5F5F5</code>, logo 2 bên, divider line mảnh giữa. Không thêm quá nhiều element.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 3 -->
+    <div class="track t3">
+      <div class="track-head" style="background:linear-gradient(120deg,#0a7d6a,#00C9A7)">
+        <span class="track-num">3</span>
+        <div><h3>Event / Knowledge Sharing</h3>
+        <span class="ref">Airwallex ref: stage photo + conference branding</span></div>
+      </div>
+      <div class="track-body">
+        <div class="mockup-col">
+          <div class="mock-label">Demo mockup · during-event</div>
+          <div class="post m3">
+            <div class="photo">
+              <span class="tag">Live</span>
+              <div class="stage"></div>
+              <div class="figure"></div>
+            </div>
+            <div class="bar">
+              <div class="logo"><span class="dot"></span>BBCIncorp</div>
+              <div class="ev">Fintech Summit 2025</div>
+            </div>
+          </div>
+        </div>
+        <div class="content-col">
+          <h4>Mục tiêu</h4>
+          <p>BBCIncorp có mặt ở sự kiện, hội thảo, webinar — visual thể hiện brand đang di chuyển, không đứng yên.</p>
+          <div class="sub"><span class="tag">Loại A — Pre-event teaser:</span> Dark background, typography lớn tên event + ngày, minimal. Accent cam/teal ở viền/corner.</div>
+          <div class="sub"><span class="tag">Loại B — During/post-event:</span> Photo thực tế + overlay brand bar (Navy, logo, tagline ngắn). Không edit nặng — authenticity là nhịp.</div>
+          <div class="sub"><span class="tag">Loại C — Share insight:</span> Card: Quote highlight + web icon nhỏ + URL rút gọn. Background trắng/xanh nhạt.</div>
+          <p class="avoid"><strong>Tránh:</strong> Poster quá đầy thông tin, nhiều màu lẫn lộn, font nhỏ khó đọc trên mobile.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 4 -->
+    <div class="track t4">
+      <div class="track-head" style="background:linear-gradient(120deg,#111218,#2a2d3a)">
+        <span class="track-num">4</span>
+        <div><h3>Product / Service / Feature Introduce</h3>
+        <span class="ref">Airwallex ref: "What's New" dark card, isometric stack</span></div>
+      </div>
+      <div class="track-body">
+        <div class="mockup-col">
+          <div class="mock-label">Demo mockup · launch (4A)</div>
+          <div class="post m4">
+            <div class="inner">
+              <div class="soon">Coming Soon · 2025</div>
+              <div class="pn">BSmart</div>
+              <div class="desc">AI-driven compliance, built in.</div>
+              <div class="logo"><span class="dot"></span>BBCIncorp</div>
+            </div>
+          </div>
+        </div>
+        <div class="content-col">
+          <h4>Mục tiêu</h4>
+          <p>Giới thiệu dịch vụ/tính năng mới (BSmart, new jurisdiction, compliance tool...) với cảm giác launch, không phải brochure.</p>
+          <div class="sub"><span class="tag">4A — Coming Soon / Launch:</span> Full dark <code>#111218</code> · typography large tên + date · logo trắng + accent · không ảnh người (<strong>product name as the visual</strong>) · subtle gradient/mesh.</div>
+          <div class="sub"><span class="tag">4B — How it works / Stack:</span> Isometric illustration / flat icon blocks so sánh cũ vs BBCIncorp · nền trắng/xám · blocks màu navy-teal-amber · caption 1 câu positioning.</div>
+          <div class="sub" style="margin-bottom:0"><span class="tag">4C — BSmart / AI product:</span> Dark mode + UI screenshot mock hoặc abstract data viz · tag/repost từ profile BSmart + góc nhìn.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 5 -->
+    <div class="track t5">
+      <div class="track-head" style="background:linear-gradient(120deg,#b06a1f,#FF8A00)">
+        <span class="track-num">5</span>
+        <div><h3>Educational / Knowledge Post</h3>
+        <span class="ref">BBCIncorp-specific — core value cho ICP</span></div>
+      </div>
+      <div class="track-body">
+        <div class="mockup-col">
+          <div class="mock-label">Demo mockup · carousel cover</div>
+          <div class="post m5">
+            <div class="ctop"><span>Carousel</span><span>1 / 5</span></div>
+            <div class="big">
+              <div class="num">3</div>
+              <div class="htxt">mistakes when incorporating in Singapore</div>
+            </div>
+            <div class="cta">
+              <span class="swipe">Swipe →</span>
+              <span class="logo"><span class="dot"></span>BBCIncorp</span>
+            </div>
+          </div>
+        </div>
+        <div class="content-col">
+          <h4>Mục tiêu</h4>
+          <p>Kiến thức về business formation, tax, compliance cho founders/CFO/business owners — core value của BBCIncorp.</p>
+          <div class="sub"><span class="tag">Carousel / multi-image (ưu tiên):</span> Cover = bold statement + số liệu gây chú ý · slide trong = 1 point/slide + icon · final = CTA nhẹ · light background + Navy text + highlight Teal/Amber.</div>
+          <div class="sub"><span class="tag">Single infographic:</span> "checklist" hoặc "comparison table" · không quá 5–6 items · typography đủ lớn đọc trên mobile không cần zoom.</div>
+          <div class="callout" style="margin-bottom:0"><strong>Nhịp khác biệt:</strong> Thêm <strong>micro-storytelling</strong> vào cover — không chỉ "Company Types in Singapore" mà "You picked the wrong company type. Here's how to fix it."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 6 -->
+    <div class="track t6">
+      <div class="track-head" style="background:linear-gradient(120deg,#5b1d8a,#9b3fd1)">
+        <span class="track-num">6</span>
+        <div><h3>Campaign / Big Moment Visual</h3>
+        <span class="ref">Airwallex ref: Arsenal Champions — high-production, emotional</span></div>
+      </div>
+      <div class="track-body">
+        <div class="mockup-col">
+          <div class="mock-label">Demo mockup · milestone</div>
+          <div class="post m6">
+            <svg viewBox="0 0 300 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#9ff6e4" stroke-width="1" opacity="0.55">
+                <line x1="40" y1="60" x2="120" y2="110"/>
+                <line x1="120" y1="110" x2="210" y2="70"/>
+                <line x1="210" y1="70" x2="260" y2="150"/>
+                <line x1="120" y1="110" x2="160" y2="200"/>
+                <line x1="160" y1="200" x2="70" y2="230"/>
+                <line x1="160" y1="200" x2="250" y2="240"/>
+                <line x1="40" y1="60" x2="70" y2="230"/>
+              </g>
+              <g fill="#c9fff2">
+                <circle cx="40" cy="60" r="4"/><circle cx="120" cy="110" r="5"/>
+                <circle cx="210" cy="70" r="4"/><circle cx="260" cy="150" r="3"/>
+                <circle cx="160" cy="200" r="5"/><circle cx="70" cy="230" r="4"/>
+                <circle cx="250" cy="240" r="3"/>
+              </g>
+            </svg>
+            <div class="inner">
+              <div class="big">10,000<br>businesses.</div>
+              <div class="mission">One mission: Make global business simpler.</div>
+              <div class="logo"><span class="dot"></span>BBCIncorp</div>
+            </div>
+          </div>
+        </div>
+        <div class="content-col">
+          <h4>Mục tiêu</h4>
+          <p>Milestone: anniversary, số khách hàng milestone, partnership lớn, award...</p>
+          <h4>Visual Direction</h4>
+          <ul>
+            <li>Full-bleed artwork — <strong>không template thường ngày</strong></li>
+            <li>Illustration / graphic concept riêng (không stock photo)</li>
+            <li>Màu có thể phá vỡ palette thường ngày — nhưng vẫn có logo rõ ràng</li>
+            <li>Typography mạnh, emotional copy</li>
+          </ul>
+          <div class="callout" style="margin-bottom:0"><strong>Lưu ý:</strong> Tuyến này chỉ dùng <strong>3–5 lần/năm</strong> — dùng nhiều sẽ mất impact.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK 7 -->
+    <div class="track t7">
+      <div class="track-head" style="background:linear-gradient(120deg,#0D1B2A,#0a7d6a)">
+        <span class="track-num">7</span>
+        <div><h3>Social Proof / Client Story</h3>
+        <span class="ref">Học "no face needed" + trust-building BBCIncorp</span></div>
+      </div>
+      <div class="track-body">
+        <div class="mockup-col">
+          <div class="mock-label">Demo mockup · quote card (A)</div>
+          <div class="post m7">
+            <div class="mark">&ldquo;</div>
+            <div class="q">BBCIncorp set up our Singapore entity in days, not weeks.</div>
+            <div class="aline"></div>
+            <div class="who"><b>Sarah L.</b> · Founder, TechCo</div>
+            <div class="logo"><span class="dot"></span>BBCIncorp</div>
+          </div>
+        </div>
+        <div class="content-col">
+          <h4>Mục tiêu</h4>
+          <p>Testimonial, case study, client milestone — không theo kiểu "avatar tròn + quote" nhàm.</p>
+          <div class="sub"><span class="tag">Option A — Typography-led quote:</span> Nền Deep Navy/gần đen · quote lớn trắng · quotation mark graphic lớn làm design element · tên client + company nhỏ, không cần ảnh mặt · accent line Teal/Amber.</div>
+          <div class="sub"><span class="tag">Option B — Mini case study:</span> Layout 2 cột Problem | Solution · icon ngành/jurisdiction · CTA "Full case study in bio".</div>
+          <div class="sub" style="margin-bottom:0"><span class="tag">Option C — Data milestone:</span> Số liệu lớn làm hero ("500+ companies incorporated in Q1 2025") · subtle map/flag icons phía sau · clean, minimal, data speaks.</div>
+        </div>
+      </div>
+    </div>
+    <hr class="divider">
+  </section>
+
+  <!-- SECTION IV -->
+  <section id="section-4">
+    <span class="sec-label">Phần IV</span>
+    <h2 class="sec-title">Quy tắc "nhịp" chung cho toàn bộ feed</h2>
+
+    <h3>1. Visual variety theo chu kỳ</h3>
+    <p>Không đăng 3 post cùng layout liên tiếp. Quy tắc nhịp gợi ý:</p>
+    <div class="callout teal">
+      Dark card → Light infographic → Event photo → Dark card → Carousel → Quote card → Campaign
+    </div>
+
+    <h3>2. Tỷ lệ post theo tuyến (gợi ý tháng)</h3>
+    <table>
+      <thead><tr><th>Tuyến nội dung</th><th>Số posts / tháng</th></tr></thead>
+      <tbody>
+        <tr><td>Thought Leadership</td><td><strong>2–3</strong> posts</td></tr>
+        <tr><td>Ecosystem / Repost</td><td><strong>4</strong> posts</td></tr>
+        <tr><td>Educational / Knowledge</td><td><strong>4–5</strong> posts</td></tr>
+        <tr><td>Product / Service</td><td><strong>2</strong> posts</td></tr>
+        <tr><td>Event</td><td><strong>1–2</strong> posts (theo lịch thực tế)</td></tr>
+        <tr><td>Social Proof</td><td><strong>2</strong> posts</td></tr>
+        <tr><td>Campaign</td><td><strong>0–1</strong> post</td></tr>
+      </tbody>
+    </table>
+
+    <h3>3. Rules of thumb khi design</h3>
+    <ul>
+      <li><strong>Scroll test:</strong> Nhìn visual trong 2 giây — có đọc được headline không? Nếu không → text to hơn</li>
+      <li><strong>Mobile first:</strong> Mọi text phải đọc được trên màn 5 inch</li>
+      <li><strong>Consistency element:</strong> Mỗi post cần ít nhất 1 trong 3: BBCIncorp logo / brand color / brand font</li>
+      <li><strong>"One thing" rule:</strong> Mỗi visual chỉ truyền đạt 1 thông điệp chính</li>
+    </ul>
+
+    <h3>4. Cái BBCIncorp KHÔNG nên làm (dù Airwallex làm)</h3>
+    <div class="callout" style="border-left-color:#b0341d;background:#fef4f2">
+      <ul style="margin:0">
+        <li class="avoid">Không dùng sports partnership visual (không phù hợp positioning)</li>
+        <li class="avoid">Không dùng all-black nặng cho mọi post — cần giữ sự approachable của trust brand</li>
+        <li class="avoid">Không dùng abstract too dark khi post về compliance/legal — cần clarity</li>
+      </ul>
+    </div>
+    <hr class="divider">
+  </section>
+
+  <!-- SECTION V -->
+  <section id="section-5">
+    <span class="sec-label">Phần V</span>
+    <h2 class="sec-title">Quick Reference — Format theo Post Type</h2>
+    <table>
+      <thead>
+        <tr><th>Loại Post</th><th>Background</th><th>Typography</th><th>Accent</th><th>Human Element</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Thought Leadership</strong></td><td>Near-black / Deep Navy</td><td>Bold, large, white</td><td>Teal line</td><td>None</td></tr>
+        <tr><td><strong>Product Launch</strong></td><td>Full dark #111218</td><td>Display bold, white</td><td>Brand color accent</td><td>None</td></tr>
+        <tr><td><strong>Educational Carousel</strong></td><td>White / Light Grey</td><td>Medium bold, Navy</td><td>Amber / Teal highlight</td><td>Icon only</td></tr>
+        <tr><td><strong>Event Coverage</strong></td><td>Photo + overlay</td><td>Medium, white on bar</td><td>Navy bar</td><td>Action shot OK</td></tr>
+        <tr><td><strong>Social Proof / Quote</strong></td><td>Deep Navy</td><td>Quote large, white</td><td>Amber quotemark</td><td>No face needed</td></tr>
+        <tr><td><strong>Ecosystem Repost</strong></td><td>White card</td><td>Regular, Navy</td><td>Subtle logo</td><td>None</td></tr>
+        <tr><td><strong>Campaign</strong></td><td>Custom artwork</td><td>Emotional, large</td><td>Full palette freedom</td><td>Optional abstract</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- APPENDIX -->
+  <section id="appendix">
+    <span class="sec-label">Phụ lục</span>
+    <h2 class="sec-title">Thư viện hình ảnh demo (Canva)</h2>
+    <div class="appendix-intro">
+      Thư viện gom toàn bộ ảnh demo production (Canva) theo đúng 7 tuyến của framework — để guide chính giữ bố cục sạch chỉ-mockup. <strong>Đây là khu vực "sống", cập nhật dần.</strong> Ảnh dùng link export Canva nên có thể hết hạn sau vài giờ; khi đó ô ảnh tự chuyển thành nút "Mở Canva" (không vỡ layout). Bản lưu vĩnh viễn: tải PNG về rồi thay vào đúng ô.
+    </div>
+
+    <div class="lib-track">
+      <div class="lib-head"><span class="lib-badge">1</span><h3>Thought Leadership / Insight</h3><span class="meta">4 phương án · 1080×1080</span></div>
+      <div class="lib-grid">
+        <a class="cv-shot" href="https://www.canva.com/d/CqbqJcxeq7FWvac" target="_blank" rel="noopener"><span class="cv-n">01</span><img src="https://export-download.canva.com/a4gmQ/DAHNpTa4gmQ/-1/0/0001-4956718976161251556.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T024126Z&X-Amz-Expires=15744&X-Amz-Signature=1dd27e2c314348d07c56fe2508d9986459e790d93cd9c3f297f9aabd210446f4&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A03%3A50%20GMT" alt="Tuyến 1 phương án 1" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/X1CQOSYQC-yamry" target="_blank" rel="noopener"><span class="cv-n">02</span><img src="https://export-download.canva.com/DIgbk/DAHNpWDIgbk/-1/0/0001-2593455070124479564.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T032043Z&X-Amz-Expires=13270&X-Amz-Signature=388b36d42af750891174fc20aa64d4eaa450515e21825c2d80033444f4b63918&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A01%3A53%20GMT" alt="Tuyến 1 phương án 2" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/00KWGoBdcms3H4a" target="_blank" rel="noopener"><span class="cv-n">03</span><img src="https://export-download.canva.com/riQq8/DAHNpYriQq8/-1/0/0001-3042689135405140303.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T082608Z&X-Amz-Expires=80738&X-Amz-Signature=db8bfb6e7c85fdd49e4cf72692941bc6d5a0127bd73d0d5c43c6b00de9f90563&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2006%3A51%3A46%20GMT" alt="Tuyến 1 phương án 3" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/TZgpR-LNvFABCIC" target="_blank" rel="noopener"><span class="cv-n">04</span><img src="https://export-download.canva.com/a-NG8/DAHNpca-NG8/-1/0/0001-6854986219551720373.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T180014Z&X-Amz-Expires=46160&X-Amz-Signature=f302c65d7be96f022ce7cc422dd7851f889833d0c7cd80a83d77fb3f6047a002&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2006%3A49%3A34%20GMT" alt="Tuyến 1 phương án 4" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+      </div>
+    </div>
+
+    <div class="lib-track">
+      <div class="lib-head"><span class="lib-badge">2</span><h3>Ecosystem / Co-brand Card</h3><span class="meta">Cần logo partner thật — team tự ráp</span></div>
+      <div class="lib-grid">
+        <div class="lib-empty"><span class="pa">⊕</span>Ráp logo partner<br>vào template</div>
+        <div class="lib-empty"><span class="pa">⊕</span>Co-brand 50/50</div>
+      </div>
+    </div>
+
+    <div class="lib-track">
+      <div class="lib-head"><span class="lib-badge">3A</span><h3>Event — Pre-event Teaser</h3><span class="meta">4 phương án · 1080×1080</span></div>
+      <div class="lib-grid">
+        <a class="cv-shot" href="https://www.canva.com/d/YiViD8zMB2xlRsb" target="_blank" rel="noopener"><span class="cv-n">01</span><img src="https://export-download.canva.com/6oyOk/DAHNpf6oyOk/-1/0/0001-2500005379655840675.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T004137Z&X-Amz-Expires=21975&X-Amz-Signature=3df80c68a9f16b11526a53c96544c4fb27a0191022dcfa9e54bc5849b9c2b91a&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2006%3A47%3A52%20GMT" alt="Tuyến 3A phương án 1" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/23ecC7GCZktVbaW" target="_blank" rel="noopener"><span class="cv-n">02</span><img src="https://export-download.canva.com/svzTs/DAHNpfsvzTs/-1/0/0001-2828768150517285881.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T183139Z&X-Amz-Expires=43895&X-Amz-Signature=0452bc012ad77a7b43e1de5b317ecc012ffb1613ec2fe538eeac1129dbfcf1b1&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2006%3A43%3A14%20GMT" alt="Tuyến 3A phương án 2" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/a5SBezJY94bquds" target="_blank" rel="noopener"><span class="cv-n">03</span><img src="https://export-download.canva.com/22yMc/DAHNpZ22yMc/-1/0/0001-601738135225255094.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T012631Z&X-Amz-Expires=21269&X-Amz-Signature=0a0ac9bfc32001d8d62d01831eaf3e01df197da1fdb71772bf313690b4c3a041&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A21%3A00%20GMT" alt="Tuyến 3A phương án 3" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/MMvweJOYQpXv3VK" target="_blank" rel="noopener"><span class="cv-n">04</span><img src="https://export-download.canva.com/sk7iE/DAHNpYsk7iE/-1/0/0001-698565526351265425.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T165955Z&X-Amz-Expires=50951&X-Amz-Signature=bdd754166cfabb4a167bbb9c05208fbe01577028405eca220fdd47c14700a04e&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A09%3A06%20GMT" alt="Tuyến 3A phương án 4" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+      </div>
+    </div>
+
+    <div class="lib-track">
+      <div class="lib-head"><span class="lib-badge">3B</span><h3>Event — Recap (photo + bar)</h3><span class="meta">Cần ảnh sân khấu thật — team tự ráp</span></div>
+      <div class="lib-grid">
+        <div class="lib-empty"><span class="pa">⊕</span>Photo thật<br>+ overlay bar Navy</div>
+      </div>
+    </div>
+
+    <div class="lib-track">
+      <div class="lib-head"><span class="lib-badge">4A</span><h3>Product — Coming Soon Launch</h3><span class="meta">4 phương án · 1080×1080</span></div>
+      <div class="lib-grid">
+        <a class="cv-shot" href="https://www.canva.com/d/EV-QvP0Cn-e2HJd" target="_blank" rel="noopener"><span class="cv-n">01</span><img src="https://export-download.canva.com/2ZKAQ/DAHNps2ZKAQ/-1/0/0001-5891215901721202161.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T182650Z&X-Amz-Expires=51067&X-Amz-Signature=b209fa2dfbf29b7ecfe07c19077842c226bd892318fb60f33d580321328a2e00&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A37%3A57%20GMT" alt="Tuyến 4A phương án 1" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/q160OafOICpyMqf" target="_blank" rel="noopener"><span class="cv-n">02</span><img src="https://export-download.canva.com/lCiXA/DAHNpvlCiXA/-1/0/0001-2237670703560636110.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T224009Z&X-Amz-Expires=35281&X-Amz-Signature=14d7e851c0ca278a0cc77ecf11a01bdc0f59e79a3b902751de10a23f2e432494&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A28%3A10%20GMT" alt="Tuyến 4A phương án 2" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/slGcQZgmwlIPM9i" target="_blank" rel="noopener"><span class="cv-n">03</span><img src="https://export-download.canva.com/2Bwu8/DAHNpt2Bwu8/-1/0/0001-4001955857238905290.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T213147Z&X-Amz-Expires=38143&X-Amz-Signature=8baaa7e2f3ae3364915e8bb9dab8c615e88cceb2699232cee3e62bfa7992f6d9&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A07%3A30%20GMT" alt="Tuyến 4A phương án 3" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/sBdewW7uHmcsoJ9" target="_blank" rel="noopener"><span class="cv-n">04</span><img src="https://export-download.canva.com/hZvQg/DAHNpqhZvQg/-1/0/0001-6187327579580705418.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T072255Z&X-Amz-Expires=90973&X-Amz-Signature=ca7329360f2a60f11092843464eb0ee8cfb68ef1e1a2bb51a480aa9724bccd93&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A39%3A08%20GMT" alt="Tuyến 4A phương án 4" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+      </div>
+    </div>
+
+    <div class="lib-track">
+      <div class="lib-head"><span class="lib-badge">5</span><h3>Educational — Carousel Cover</h3><span class="meta">4 phương án · 1080×1080</span></div>
+      <div class="lib-grid">
+        <a class="cv-shot" href="https://www.canva.com/d/n1sFxAbiggTUrTK" target="_blank" rel="noopener"><span class="cv-n">01</span><img src="https://export-download.canva.com/Wdzco/DAHNptWdzco/-1/0/0001-5206668759689326033.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T210816Z&X-Amz-Expires=41305&X-Amz-Signature=1a8ddc47e32805c503d1a0ac5251cbf39ee8a42aeb10fe25617c1c5e602068e0&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A36%3A41%20GMT" alt="Tuyến 5 phương án 1" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/e19_Q56VjVzvpU1" target="_blank" rel="noopener"><span class="cv-n">02</span><img src="https://export-download.canva.com/W_lRY/DAHNpoW_lRY/-1/0/0001-4385887726286958809.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T104349Z&X-Amz-Expires=77182&X-Amz-Signature=25f6470a5d67b843ec905e13ed70f434692b9791079dac4bfacf21195fd64e7e&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A10%3A11%20GMT" alt="Tuyến 5 phương án 2" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/YE2X8hRTfY73URo" target="_blank" rel="noopener"><span class="cv-n">03</span><img src="https://export-download.canva.com/wnQjw/DAHNpownQjw/-1/0/0001-3190182026793466189.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T051812Z&X-Amz-Expires=10091&X-Amz-Signature=081c792681da5ce5012590f7350c7d1ce29bed4c631ec9083847feae2152fc01&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A06%3A23%20GMT" alt="Tuyến 5 phương án 3" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/DUcZwQCHECBLK2D" target="_blank" rel="noopener"><span class="cv-n">04</span><img src="https://export-download.canva.com/nNb98/DAHNptnNb98/-1/0/0001-3042689136348254351.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T195800Z&X-Amz-Expires=42467&X-Amz-Signature=53f1e3d5ef4bc0de6a3810aa6a9bbedeebae6b3dd4e776608d58407326feefa8&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A45%3A47%20GMT" alt="Tuyến 5 phương án 4" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+      </div>
+    </div>
+
+    <div class="lib-track">
+      <div class="lib-head"><span class="lib-badge">6</span><h3>Campaign / Big Moment</h3><span class="meta">4 phương án · 1080×1080</span></div>
+      <div class="lib-grid">
+        <a class="cv-shot" href="https://www.canva.com/d/HNy-k5AGu73k2TI" target="_blank" rel="noopener"><span class="cv-n">01</span><img src="https://export-download.canva.com/9SIes/DAHNpi9SIes/-1/0/0001-533058244420839764.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T070659Z&X-Amz-Expires=89414&X-Amz-Signature=234b0f82a297bafe37d9ec189e1902313e18e72ec8061dcd01ca61bd07fbb5ff&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A57%3A13%20GMT" alt="Tuyến 6 phương án 1" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/zG_imuf2rokgBAN" target="_blank" rel="noopener"><span class="cv-n">02</span><img src="https://export-download.canva.com/NOPmk/DAHNpuNOPmk/-1/0/0001-2500005383033355625.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T110859Z&X-Amz-Expires=74977&X-Amz-Signature=832c6f9f5ca41a947a7b5fa8769052e9197b493e22b2bfedfdc4005049110a0a&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A58%3A36%20GMT" alt="Tuyến 6 phương án 2" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/Yx7Bt92cUyQxIav" target="_blank" rel="noopener"><span class="cv-n">03</span><img src="https://export-download.canva.com/hPsC8/DAHNpshPsC8/-1/0/0001-7985389728816078735.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T021708Z&X-Amz-Expires=19445&X-Amz-Signature=f580f67c7478fe249e93bdfd4c3b432463b6dbee8abd4442122402268318d795&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A41%3A13%20GMT" alt="Tuyến 6 phương án 3" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/9PqRuaxiwRMHfR3" target="_blank" rel="noopener"><span class="cv-n">04</span><img src="https://export-download.canva.com/aPVM8/DAHNppaPVM8/-1/0/0001-4001955858359068564.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T113258Z&X-Amz-Expires=72685&X-Amz-Signature=9433151fc35f168da94565fa1108f5d8bcb5c71fb77981886d35bebd1fce11e4&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2007%3A44%3A23%20GMT" alt="Tuyến 6 phương án 4" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+      </div>
+    </div>
+
+    <div class="lib-track">
+      <div class="lib-head"><span class="lib-badge">7</span><h3>Social Proof / Client Quote</h3><span class="meta">4 phương án · 1080×1080</span></div>
+      <div class="lib-grid">
+        <a class="cv-shot" href="https://www.canva.com/d/9eiQCSQDy0e3LnA" target="_blank" rel="noopener"><span class="cv-n">01</span><img src="https://export-download.canva.com/R0QkU/DAHNphR0QkU/-1/0/0001-1452918468304809428.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T200743Z&X-Amz-Expires=44193&X-Amz-Signature=6fb68a8a93879fd145f8ee74c0479225e0565362a3ad3b1f66a7fe831d48f0a8&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A24%3A16%20GMT" alt="Tuyến 7 phương án 1" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/u5JnxG8XGfbYZdw" target="_blank" rel="noopener"><span class="cv-n">02</span><img src="https://export-download.canva.com/eiX3c/DAHNpmeiX3c/-1/0/0001-4403902125409173509.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260626%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260626T043116Z&X-Amz-Expires=13105&X-Amz-Signature=7524769dde9294d491cefc7dbe8e4ed23157224b72c9538eaf77ca1f7385601c&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A09%3A41%20GMT" alt="Tuyến 7 phương án 2" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/w_wlQO5R6SSFLPk" target="_blank" rel="noopener"><span class="cv-n">03</span><img src="https://export-download.canva.com/g2f_s/DAHNppg2f_s/-1/0/0001-9212620626868238994.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T082242Z&X-Amz-Expires=85484&X-Amz-Signature=8de20c4b86184f735840cf1db111f39a63b5025e9fc2f5faa642f7cf7531d28b&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A07%3A26%20GMT" alt="Tuyến 7 phương án 3" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+        <a class="cv-shot" href="https://www.canva.com/d/894-S8m0hJ8b0hm" target="_blank" rel="noopener"><span class="cv-n">04</span><img src="https://export-download.canva.com/-DYgI/DAHNpq-DYgI/-1/0/0001-5219053657849266073.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260625%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260625T211924Z&X-Amz-Expires=38902&X-Amz-Signature=50ce0987b56b8d6c06796b666fdca15e212669f5b7963591aa1682f0013944a9&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Fri%2C%2026%20Jun%202026%2008%3A07%3A46%20GMT" alt="Tuyến 7 phương án 4" loading="lazy" onerror="this.style.display='none';this.parentElement.classList.add('cv-broken')"><span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Guide này dùng để định hướng cho Content team, Brand team và Design team.<br>
+    Demo mockup là concept minh họa — mỗi tuyến sẽ được mở rộng thành template cụ thể khi production.
+  </footer>
+
+</div>
+
+<!-- ===== LIVE EDIT TOOLBAR ===== -->
+<div class="edit-toolbar" id="edit-toolbar">
+  <button type="button" id="btn-edit-toggle">✏️ Bật chế độ chỉnh sửa</button>
+  <button type="button" id="btn-history">🕘 Lịch sử</button>
+  <button type="button" id="btn-save" style="display:none">💾 Lưu thay đổi</button>
+  <span class="edit-status" id="edit-status">Đang tải…</span>
+</div>
+
+<!-- ===== HISTORY PANEL ===== -->
+<div class="history-overlay" id="history-overlay">
+  <div class="history-panel">
+    <header>
+      <h4>Lịch sử thay đổi</h4>
+      <button type="button" class="hp-close" id="btn-history-close">✕</button>
+    </header>
+    <div class="history-list" id="history-list"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+(function(){
+  var PAGE_ID = 'bbcincorp-linkedin-guideline';
+  var HISTORY_TABLE = 'page_content_history';
+
+  // Văn bản: click để sửa chữ trực tiếp
+  var TEXT_SELECTOR = [
+    'header.doc-head h1', 'header.doc-head .subtitle', 'header.doc-head .eyebrow',
+    '.wrap h2.sec-title', '.wrap h3', '.wrap h4',
+    '.wrap p', '.wrap li', '.wrap td', '.wrap th',
+    '.wrap .callout', '.wrap .sub', '.wrap .appendix-intro',
+    '.wrap .track-head h3', '.wrap .track-head .ref',
+    '.wrap footer'
+  ].join(',');
+  // Màu: chuột phải để mở bảng chọn màu
+  var COLOR_SELECTOR = '.wrap .swatch .chip, .wrap .callout';
+  // Ảnh có sẵn: click để dán link ảnh mới
+  var IMAGE_SELECTOR = '.wrap img';
+  // Ô placeholder rỗng: click để dán link ảnh, biến thành ảnh thật
+  var PLACEHOLDER_SELECTOR = '.wrap .lib-empty';
+
+  var ALL_SELECTOR = [TEXT_SELECTOR, COLOR_SELECTOR, IMAGE_SELECTOR, PLACEHOLDER_SELECTOR].join(',');
+  var EXCLUDE_CLOSEST = '.toc';
+
+  var toolbar = document.getElementById('edit-toolbar');
+  var btnToggle = document.getElementById('btn-edit-toggle');
+  var btnSave = document.getElementById('btn-save');
+  var btnHistory = document.getElementById('btn-history');
+  var statusEl = document.getElementById('edit-status');
+  var historyOverlay = document.getElementById('history-overlay');
+  var historyList = document.getElementById('history-list');
+  var btnHistoryClose = document.getElementById('btn-history-close');
+  var lastStatus = '';
+
+  function setStatus(text){ lastStatus = text; statusEl.textContent = text; }
+
+  function tagEditableElements(){
+    var textSet = new Set(document.querySelectorAll(TEXT_SELECTOR));
+    var colorSet = new Set(document.querySelectorAll(COLOR_SELECTOR));
+    var imageSet = new Set(document.querySelectorAll(IMAGE_SELECTOR));
+    var phSet = new Set(document.querySelectorAll(PLACEHOLDER_SELECTOR));
+    var all = document.querySelectorAll(ALL_SELECTOR);
+    var i = 0;
+    all.forEach(function(el){
+      if (el.closest(EXCLUDE_CLOSEST)) return;
+      el.setAttribute('data-eid', 'e' + (i++));
+      if (textSet.has(el)) el.classList.add('et-text');
+      if (colorSet.has(el)) el.classList.add('et-color');
+      if (imageSet.has(el)) el.classList.add('et-image');
+      if (phSet.has(el)) el.classList.add('et-placeholder');
+    });
+  }
+
+  // ----- lưu / phục hồi từng phần tử -----
+  function collectRecord(el){
+    if (el.tagName === 'IMG') return { src: el.getAttribute('src') || '' };
+    var record = { html: el.innerHTML };
+    var styleAttr = el.getAttribute('style');
+    if (styleAttr) record.style = styleAttr;
+    return record;
+  }
+
+  function applyRecord(el, record){
+    if (!record) return;
+    if (el.tagName === 'IMG') {
+      if (record.src) el.setAttribute('src', record.src);
+      return;
+    }
+    if (typeof record.html === 'string') el.innerHTML = record.html;
+    if (typeof record.style === 'string') el.setAttribute('style', record.style);
+  }
+
+  function applyContent(map){
+    Object.keys(map).forEach(function(eid){
+      var el = document.querySelector('[data-eid="' + eid + '"]');
+      if (el) applyRecord(el, map[eid]);
+    });
+  }
+
+  var client = null;
+  if (window.supabase && window.SUPABASE_URL && window.SUPABASE_ANON_KEY &&
+      window.SUPABASE_URL.indexOf('YOUR_') !== 0) {
+    client = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+  }
+
+  function loadContent(){
+    if (!client) { setStatus('Chưa cấu hình Supabase (xem config.js) — chỉ xem được bản gốc.'); return; }
+    setStatus('Đang tải bản mới nhất…');
+    client.from('page_content').select('content, updated_at').eq('page_id', PAGE_ID).maybeSingle()
+      .then(function(res){
+        if (res.error) { setStatus('Không tải được dữ liệu: ' + res.error.message); return; }
+        if (res.data && res.data.content) {
+          applyContent(res.data.content);
+          var d = new Date(res.data.updated_at);
+          setStatus('Cập nhật lần cuối: ' + d.toLocaleString('vi-VN'));
+        } else {
+          setStatus('Chưa có chỉnh sửa nào — đang xem bản gốc.');
+        }
+      });
+  }
+
+  function saveContent(){
+    if (!client) { setStatus('Chưa cấu hình Supabase — không thể lưu.'); return; }
+    var map = {};
+    document.querySelectorAll('[data-eid]').forEach(function(el){
+      map[el.getAttribute('data-eid')] = collectRecord(el);
+    });
+    setStatus('Đang lưu…');
+    client.from('page_content').upsert({ page_id: PAGE_ID, content: map, updated_at: new Date().toISOString() })
+      .then(function(res){
+        if (res.error) { setStatus('Lưu thất bại: ' + res.error.message); return; }
+        client.from(HISTORY_TABLE).insert({ page_id: PAGE_ID, content: map }).then(function(histRes){
+          var msg = 'Đã lưu lúc ' + new Date().toLocaleString('vi-VN') + '. Người khác reload trang sẽ thấy bản mới.';
+          if (histRes.error) msg += ' (Ghi lịch sử thất bại: ' + histRes.error.message + ')';
+          setStatus(msg);
+        });
+      });
+  }
+
+  // ----- lịch sử thay đổi -----
+  var historyCache = {};
+
+  function formatDate(iso){
+    return new Date(iso).toLocaleString('vi-VN');
+  }
+
+  function renderHistory(rows){
+    if (!rows || !rows.length) {
+      historyList.innerHTML = '<div class="history-empty">Chưa có lịch sử lưu nào.</div>';
+      return;
+    }
+    historyList.innerHTML = rows.map(function(row, idx){
+      var isLatest = idx === 0;
+      return '<div class="history-item">' +
+          '<div class="history-meta"><span class="hi-time">' + formatDate(row.created_at) + '</span>' +
+          (isLatest ? '<span class="hi-note">Bản mới nhất</span>' : '') +
+          '</div>' +
+          (isLatest ? '' : '<button type="button" data-history-id="' + row.id + '">Khôi phục</button>') +
+        '</div>';
+    }).join('');
+  }
+
+  function openHistory(){
+    historyOverlay.classList.add('open');
+    if (!client) {
+      historyList.innerHTML = '<div class="history-empty">Chưa cấu hình Supabase — không có lịch sử.</div>';
+      return;
+    }
+    historyList.innerHTML = '<div class="history-empty">Đang tải…</div>';
+    client.from(HISTORY_TABLE).select('id, content, created_at').eq('page_id', PAGE_ID)
+      .order('created_at', { ascending: false }).limit(50)
+      .then(function(res){
+        if (res.error) {
+          historyList.innerHTML = '<div class="history-empty">Lỗi tải lịch sử: ' + res.error.message + '</div>';
+          return;
+        }
+        historyCache = {};
+        (res.data || []).forEach(function(row){ historyCache[row.id] = row.content; });
+        renderHistory(res.data || []);
+      });
+  }
+
+  function closeHistory(){
+    historyOverlay.classList.remove('open');
+  }
+
+  function restoreVersion(content){
+    if (!client) return;
+    applyContent(content);
+    setStatus('Đang khôi phục…');
+    client.from('page_content').upsert({ page_id: PAGE_ID, content: content, updated_at: new Date().toISOString() })
+      .then(function(res){
+        if (res.error) { setStatus('Khôi phục thất bại: ' + res.error.message); return; }
+        client.from(HISTORY_TABLE).insert({ page_id: PAGE_ID, content: content }).then(function(){
+          setStatus('Đã khôi phục về phiên bản đã chọn lúc ' + new Date().toLocaleString('vi-VN') + '.');
+          closeHistory();
+        });
+      });
+  }
+
+  function setEditMode(on){
+    document.body.classList.toggle('edit-mode', on);
+    document.querySelectorAll('.et-text').forEach(function(el){
+      el.setAttribute('contenteditable', on ? 'true' : 'false');
+    });
+    btnToggle.textContent = on ? '✕ Thoát chỉnh sửa' : '✏️ Bật chế độ chỉnh sửa';
+    btnToggle.classList.toggle('active', on);
+    btnSave.style.display = on ? 'inline-block' : 'none';
+    if (on) {
+      setStatus('Đang chỉnh sửa: gõ để sửa chữ · chuột phải vào ô màu/callout để đổi màu · click vào ảnh để dán link ảnh mới.');
+    } else {
+      setStatus(lastStatus);
+    }
+  }
+
+  // ----- đổi màu (chuột phải vào .et-color) -----
+  var colorInput = document.createElement('input');
+  colorInput.type = 'color';
+  colorInput.style.position = 'fixed';
+  colorInput.style.left = '-9999px';
+  colorInput.style.top = '-9999px';
+  document.body.appendChild(colorInput);
+  var currentColorTarget = null;
+
+  function rgbToHex(rgb){
+    var m = rgb.match(/\d+/g);
+    if (!m) return '#000000';
+    return '#' + m.slice(0, 3).map(function(n){
+      return ('0' + parseInt(n, 10).toString(16)).slice(-2);
+    }).join('');
+  }
+
+  document.addEventListener('contextmenu', function(e){
+    if (!document.body.classList.contains('edit-mode')) return;
+    var el = e.target.closest('.et-color');
+    if (!el) return;
+    e.preventDefault();
+    currentColorTarget = el;
+    var current = el.style.background || getComputedStyle(el).backgroundColor;
+    colorInput.value = /^#[0-9a-f]{6}$/i.test(current) ? current : rgbToHex(current);
+    colorInput.click();
+  });
+
+  colorInput.addEventListener('input', function(){
+    if (!currentColorTarget) return;
+    currentColorTarget.style.background = colorInput.value;
+    var hexLabel = currentColorTarget.querySelector('.hex');
+    if (hexLabel) hexLabel.textContent = colorInput.value.toUpperCase();
+  });
+
+  // ----- đổi / thêm ảnh (click vào .cv-shot hoặc ô placeholder) -----
+  document.addEventListener('click', function(e){
+    if (!document.body.classList.contains('edit-mode')) {
+      return;
+    }
+
+    var cvShot = e.target.closest('.cv-shot');
+    if (cvShot) {
+      e.preventDefault();
+      var innerImg = cvShot.querySelector('img');
+      var newUrl = prompt('Dán link ảnh mới (URL):', innerImg ? innerImg.src : '');
+      if (newUrl && innerImg) {
+        innerImg.setAttribute('src', newUrl);
+        innerImg.style.display = '';
+        cvShot.classList.remove('cv-broken');
+      }
+      return;
+    }
+
+    var ph = e.target.closest('.et-placeholder');
+    if (ph) {
+      e.preventDefault();
+      var phUrl = prompt('Dán link ảnh để thay cho ô placeholder này:', '');
+      if (phUrl) {
+        ph.innerHTML = '<img src="' + phUrl.replace(/"/g, '&quot;') + '" alt="" loading="lazy" ' +
+          'style="width:100%;height:100%;object-fit:cover;display:block;border-radius:8px;">';
+      }
+      return;
+    }
+
+    var a = e.target.closest('a');
+    if (a && a.closest('[data-eid]')) e.preventDefault();
+  });
+
+  tagEditableElements();
+  loadContent();
+
+  btnToggle.addEventListener('click', function(){
+    setEditMode(!document.body.classList.contains('edit-mode'));
+  });
+  btnSave.addEventListener('click', saveContent);
+
+  btnHistory.addEventListener('click', openHistory);
+  btnHistoryClose.addEventListener('click', closeHistory);
+  historyOverlay.addEventListener('click', function(e){
+    if (e.target === historyOverlay) closeHistory();
+  });
+  historyList.addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-history-id]');
+    if (!btn) return;
+    var id = btn.getAttribute('data-history-id');
+    var content = historyCache[id];
+    if (!content) return;
+    var timeLabel = btn.closest('.history-item').querySelector('.hi-time').textContent;
+    if (confirm('Khôi phục về phiên bản lúc ' + timeLabel + '? Thao tác này sẽ ghi đè bản hiện tại cho mọi người.')) {
+      restoreVersion(content);
+    }
+  });
+})();
+</script>
+</body>
+</html>
