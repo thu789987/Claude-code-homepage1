@@ -316,7 +316,7 @@
   }
 
   /* images: click to replace via URL */
-  body.edit-mode .et-image{cursor:pointer;}
+  body.edit-mode .wrap .cv-shot{cursor:pointer;}
   body.edit-mode .cv-shot::after{
     content:"🔗 Đổi ảnh (click)";
     position:absolute;inset:auto 0 0 0;text-align:center;
@@ -325,13 +325,33 @@
   }
 
   /* empty placeholder boxes: click to add an image via URL */
-  body.edit-mode .et-placeholder{position:relative;cursor:pointer;}
-  body.edit-mode .et-placeholder::after{
+  .wrap .lib-empty{position:relative;}
+  body.edit-mode .wrap .lib-empty{cursor:pointer;}
+  body.edit-mode .wrap .lib-empty::after{
     content:"+ Dán link ảnh";
     position:absolute;inset:auto 0 0 0;text-align:center;
     background:rgba(11,61,138,.88);color:#fff;font-size:10.5px;font-weight:700;
     padding:5px 0;letter-spacing:.3px;
   }
+
+  /* per-card delete button */
+  .card-del{
+    display:none;position:absolute;top:6px;right:6px;z-index:6;
+    width:24px;height:24px;border-radius:50%;border:none;
+    background:rgba(176,52,29,.92);color:#fff;font-size:12px;font-weight:800;
+    cursor:pointer;align-items:center;justify-content:center;font-family:'Inter',sans-serif;
+  }
+  .card-del:hover{background:#b0341d;}
+  body.edit-mode .card-del{display:flex;}
+
+  /* add-card tile at the end of a grid */
+  .card-add{
+    display:none;aspect-ratio:1/1;border-radius:10px;border:1.5px dashed var(--blue);
+    background:#f4f7fb;color:var(--blue);font-weight:700;font-size:13px;font-family:'Inter',sans-serif;
+    cursor:pointer;align-items:center;justify-content:center;text-align:center;padding:10px;
+  }
+  .card-add:hover{background:#e8f0ff;}
+  body.edit-mode .card-add{display:flex;}
   .edit-toolbar{
     position:fixed;right:18px;bottom:18px;z-index:9999;
     background:#fff;border:1px solid var(--line);border-radius:12px;
@@ -973,14 +993,10 @@
   ].join(',');
   // Màu: chuột phải để mở bảng chọn màu
   var COLOR_SELECTOR = '.wrap .swatch .chip, .wrap .callout';
-  // Ảnh có sẵn: click để dán link ảnh mới
-  var IMAGE_SELECTOR = '.wrap img';
-  // Ô placeholder rỗng: click để dán link ảnh, biến thành ảnh thật
-  var PLACEHOLDER_SELECTOR = '.wrap .lib-empty';
-  // Card ảnh (link bấm vào): href sẽ được đồng bộ theo đúng link ảnh vừa dán
-  var LINK_SELECTOR = '.wrap .cv-shot';
+  // Lưới ảnh (Canva gallery / placeholder): quản lý cả danh sách ô ảnh — thêm/xoá/đổi link
+  var GRID_SELECTOR = '.wrap .canva-grid, .wrap .lib-grid';
 
-  var ALL_SELECTOR = [TEXT_SELECTOR, COLOR_SELECTOR, IMAGE_SELECTOR, PLACEHOLDER_SELECTOR, LINK_SELECTOR].join(',');
+  var ALL_SELECTOR = [TEXT_SELECTOR, COLOR_SELECTOR, GRID_SELECTOR].join(',');
   var EXCLUDE_CLOSEST = '.toc';
 
   var toolbar = document.getElementById('edit-toolbar');
@@ -998,9 +1014,7 @@
   function tagEditableElements(){
     var textSet = new Set(document.querySelectorAll(TEXT_SELECTOR));
     var colorSet = new Set(document.querySelectorAll(COLOR_SELECTOR));
-    var imageSet = new Set(document.querySelectorAll(IMAGE_SELECTOR));
-    var phSet = new Set(document.querySelectorAll(PLACEHOLDER_SELECTOR));
-    var linkSet = new Set(document.querySelectorAll(LINK_SELECTOR));
+    var gridSet = new Set(document.querySelectorAll(GRID_SELECTOR));
     var all = document.querySelectorAll(ALL_SELECTOR);
     var i = 0;
     all.forEach(function(el){
@@ -1008,16 +1022,65 @@
       el.setAttribute('data-eid', 'e' + (i++));
       if (textSet.has(el)) el.classList.add('et-text');
       if (colorSet.has(el)) el.classList.add('et-color');
-      if (imageSet.has(el)) el.classList.add('et-image');
-      if (phSet.has(el)) el.classList.add('et-placeholder');
-      if (linkSet.has(el)) el.classList.add('et-link');
+      if (gridSet.has(el)) el.classList.add('et-grid');
     });
+    document.querySelectorAll('.et-grid').forEach(setupGrid);
+  }
+
+  // ----- lưới ảnh: thêm / xoá / đổi link từng ô -----
+  function escAttr(s){ return String(s).replace(/"/g, '&quot;'); }
+
+  function buildCardEl(card){
+    var div = document.createElement('div');
+    if (card && card.src) {
+      div.innerHTML = '<a class="cv-shot" href="' + escAttr(card.href || card.src) + '" target="_blank" rel="noopener">' +
+        '<img src="' + escAttr(card.src) + '" alt="" loading="lazy" onerror="this.style.display=\'none\';this.parentElement.classList.add(\'cv-broken\')">' +
+        '<span class="cv-fallback">Link hết hạn<br>Mở Canva ↗</span>' +
+        '<button type="button" class="card-del" title="Xoá ảnh này">✕</button>' +
+        '</a>';
+    } else {
+      div.innerHTML = '<div class="lib-empty"><span class="pa">⊕</span>Thêm ảnh' +
+        '<button type="button" class="card-del" title="Xoá ô này">✕</button></div>';
+    }
+    return div.firstElementChild;
+  }
+
+  function ensureDeleteButton(cardEl){
+    if (cardEl.querySelector(':scope > .card-del')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'card-del';
+    btn.title = cardEl.classList.contains('cv-shot') ? 'Xoá ảnh này' : 'Xoá ô này';
+    btn.textContent = '✕';
+    cardEl.appendChild(btn);
+  }
+
+  function setupGrid(gridEl){
+    gridCards(gridEl).forEach(ensureDeleteButton);
+    if (gridEl.querySelector('.card-add')) return;
+    var addBtn = document.createElement('button');
+    addBtn.type = 'button';
+    addBtn.className = 'card-add';
+    addBtn.textContent = '+ Thêm ảnh';
+    gridEl.appendChild(addBtn);
+  }
+
+  function gridCards(gridEl){
+    return Array.prototype.slice.call(gridEl.querySelectorAll(':scope > .cv-shot, :scope > .lib-empty'));
   }
 
   // ----- lưu / phục hồi từng phần tử -----
   function collectRecord(el){
-    if (el.tagName === 'IMG') return { src: el.getAttribute('src') || '' };
-    if (el.classList.contains('et-link')) return { href: el.getAttribute('href') || '' };
+    if (el.classList.contains('et-grid')) {
+      var cards = gridCards(el).map(function(cardEl){
+        if (cardEl.classList.contains('cv-shot')) {
+          var img = cardEl.querySelector('img');
+          return { src: img ? img.getAttribute('src') : '', href: cardEl.getAttribute('href') || '' };
+        }
+        return { src: null };
+      });
+      return { cards: cards };
+    }
     var record = { html: el.innerHTML };
     var styleAttr = el.getAttribute('style');
     if (styleAttr) record.style = styleAttr;
@@ -1026,12 +1089,14 @@
 
   function applyRecord(el, record){
     if (!record) return;
-    if (el.tagName === 'IMG') {
-      if (record.src) el.setAttribute('src', record.src);
-      return;
-    }
-    if (el.classList.contains('et-link')) {
-      if (typeof record.href === 'string') el.setAttribute('href', record.href);
+    if (el.classList.contains('et-grid')) {
+      if (record.cards) {
+        gridCards(el).forEach(function(c){ c.remove(); });
+        var addBtn = el.querySelector('.card-add');
+        record.cards.forEach(function(card){
+          el.insertBefore(buildCardEl(card), addBtn);
+        });
+      }
       return;
     }
     if (typeof record.html === 'string') el.innerHTML = record.html;
@@ -1155,7 +1220,7 @@
     btnToggle.classList.toggle('active', on);
     btnSave.style.display = on ? 'inline-block' : 'none';
     if (on) {
-      setStatus('Đang chỉnh sửa: gõ để sửa chữ · chuột phải vào ô màu/callout để đổi màu · click vào ảnh để dán link ảnh mới.');
+      setStatus('Đang chỉnh sửa: gõ để sửa chữ · chuột phải vào ô màu/callout để đổi màu · click ảnh để đổi link · nút ✕ để xoá ô · "+ Thêm ảnh" để thêm ô mới.');
     } else {
       setStatus(lastStatus);
     }
@@ -1196,9 +1261,28 @@
     if (hexLabel) hexLabel.textContent = colorInput.value.toUpperCase();
   });
 
-  // ----- đổi / thêm ảnh (click vào .cv-shot hoặc ô placeholder) -----
+  // ----- thêm / xoá / đổi link ô ảnh -----
   document.addEventListener('click', function(e){
     if (!document.body.classList.contains('edit-mode')) {
+      return;
+    }
+
+    var addBtn = e.target.closest('.card-add');
+    if (addBtn) {
+      e.preventDefault();
+      var gridEl = addBtn.closest('.et-grid');
+      var url = prompt('Dán link ảnh (URL) cho ô mới — để trống nếu muốn thêm ô rỗng, điền link sau:', '');
+      if (url === null) return;
+      var card = url ? { src: url, href: url } : { src: null };
+      gridEl.insertBefore(buildCardEl(card), addBtn);
+      return;
+    }
+
+    var delBtn = e.target.closest('.card-del');
+    if (delBtn) {
+      e.preventDefault();
+      var cardEl = delBtn.closest('.cv-shot, .lib-empty');
+      if (cardEl && confirm('Xoá ô ảnh này?')) cardEl.remove();
       return;
     }
 
@@ -1216,16 +1300,11 @@
       return;
     }
 
-    var ph = e.target.closest('.et-placeholder');
+    var ph = e.target.closest('.lib-empty');
     if (ph) {
       e.preventDefault();
       var phUrl = prompt('Dán link (URL) cho ô placeholder này — ảnh hiển thị và link khi click đều dùng đúng link này:', '');
-      if (phUrl) {
-        var safeUrl = phUrl.replace(/"/g, '&quot;');
-        ph.innerHTML = '<a href="' + safeUrl + '" target="_blank" rel="noopener" style="display:block;width:100%;height:100%;">' +
-          '<img src="' + safeUrl + '" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:8px;">' +
-          '</a>';
-      }
+      if (phUrl) ph.replaceWith(buildCardEl({ src: phUrl, href: phUrl }));
       return;
     }
 

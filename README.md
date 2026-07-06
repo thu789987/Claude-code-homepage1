@@ -4,6 +4,7 @@ Trang guideline gốc, cộng thêm, khi bấm **"Bật chế độ chỉnh sử
 - **Sửa chữ** — click vào bất kỳ đoạn text nào (heading, paragraph, list, bảng, callout...) và gõ trực tiếp.
 - **Đổi màu** — chuột phải vào ô màu trong bảng palette (mục II) hoặc vào một callout (khối có icon 🎨 ở góc) để mở bảng chọn màu. Với ô palette, mã hex hiển thị cũng tự cập nhật theo màu mới.
 - **Đổi / thêm ảnh bằng link** — click vào bất kỳ ảnh nào trong Phụ lục (thư viện Canva) để dán link ảnh mới; click vào ô placeholder trống (⊕) để dán link ảnh và biến nó thành ảnh thật. Link bạn dán vừa dùng để hiển thị ảnh, vừa là nơi card dẫn tới khi người xem click vào (ngoài chế độ chỉnh sửa) — không cần cập nhật link riêng.
+- **Thêm / xoá ô ảnh** — mỗi lưới ảnh trong Phụ lục có nút **"+ Thêm ảnh"** ở cuối để thêm ô mới (dán link ngay hoặc để trống thêm sau); mỗi ô có nút **✕** ở góc để xoá hẳn ô đó (có xác nhận trước khi xoá).
 - Nút **"Lưu thay đổi"** — lưu toàn bộ (chữ, màu, ảnh) vào Supabase (Postgres).
 - Nút **"🕘 Lịch sử"** — xem lại các lần lưu trước đó (mỗi lần bấm Lưu tạo 1 bản ghi lịch sử, không ghi đè), và **Khôi phục** về một phiên bản cũ bất kỳ (áp dụng ngay cho mọi người, đồng thời tự tạo thêm 1 bản ghi lịch sử mới cho lần khôi phục đó).
 - Ai mở lại trang (kể cả người khác) sau khi reload sẽ thấy đúng bản đã lưu gần nhất.
@@ -70,7 +71,8 @@ Vì bạn chọn "ai có link cũng sửa được, không cần đăng nhập",
 
 ## Cách hoạt động (tóm tắt kỹ thuật)
 
-- Khi trang load, script tự gán `data-eid` cho các phần tử có thể sửa (text, ô màu, ảnh, ô placeholder) theo đúng thứ tự xuất hiện trong HTML, và gắn thêm class đánh dấu loại (`et-text`, `et-color`, `et-image`, `et-placeholder`) để quyết định hành vi tương ứng (gõ chữ / chuột phải đổi màu / click đổi ảnh).
-- Script gọi Supabase để lấy `content` (JSON dạng `{eid: {html, style}}` cho text/màu, `{eid: {src}}` cho ảnh) và ghi đè vào đúng phần tử tương ứng.
+- Khi trang load, script tự gán `data-eid` cho các phần tử có thể sửa (text, ô màu, cả lưới ảnh) theo đúng thứ tự xuất hiện trong HTML, và gắn thêm class đánh dấu loại (`et-text`, `et-color`, `et-grid`) để quyết định hành vi tương ứng.
+- Mỗi lưới ảnh (`et-grid`) được quản lý như 1 danh sách card — thêm/xoá/đổi link đều thao tác trực tiếp trên danh sách này, không theo dõi từng ảnh riêng lẻ. Khi lưu, toàn bộ danh sách card hiện tại của lưới (link ảnh + link click) được gom thành 1 mảng JSON gắn với đúng lưới đó.
+- Script gọi Supabase để lấy `content` (JSON dạng `{eid: {html, style}}` cho text/màu, `{eid: {cards: [...]}}` cho lưới ảnh) và ghi đè vào đúng phần tử tương ứng.
 - Khi bấm Lưu, script gom trạng thái hiện tại của toàn bộ phần tử `[data-eid]` (nội dung chữ, `style` inline cho màu, `src` cho ảnh) thành 1 object JSON, `upsert` vào 1 dòng duy nhất trong bảng `page_content` (bản "hiện tại", không tạo dòng mới mỗi lần lưu), **đồng thời `insert` thêm 1 dòng mới vào bảng `page_content_history`** (bảng này chỉ cho phép đọc + thêm, không cho sửa/xoá, nên lịch sử không bị viết đè).
 - Bấm **"🕘 Lịch sử"** sẽ tải tối đa 50 bản ghi gần nhất từ `page_content_history` (mới nhất trước) để hiển thị. Bấm **Khôi phục** ở một bản cũ sẽ: áp dụng nội dung đó lên trang hiện tại, `upsert` nó thành bản "hiện tại" trong `page_content`, và ghi thêm 1 dòng lịch sử mới — nên hành động khôi phục cũng được lưu vết như một lần lưu bình thường.
