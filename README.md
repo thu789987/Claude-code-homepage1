@@ -7,6 +7,7 @@ Trang guideline gốc, cộng thêm, khi bấm **"Bật chế độ chỉnh sử
 - **Thêm / xoá ô ảnh** — mỗi lưới ảnh trong Phụ lục có nút **"+ Thêm ảnh"** ở cuối để thêm ô mới (dán link ngay hoặc để trống thêm sau); mỗi ô có nút **✕** ở góc để xoá hẳn ô đó (có xác nhận trước khi xoá).
 - Nút **"Lưu thay đổi"** — lưu toàn bộ (chữ, màu, ảnh) vào Supabase (Postgres).
 - Nút **"🕘 Lịch sử"** — xem lại các lần lưu trước đó (mỗi lần bấm Lưu tạo 1 bản ghi lịch sử, không ghi đè), và **Khôi phục** về một phiên bản cũ bất kỳ (áp dụng ngay cho mọi người, đồng thời tự tạo thêm 1 bản ghi lịch sử mới cho lần khôi phục đó).
+- Nút **"📥 Xuất dữ liệu"** — tải về máy 1 file JSON chứa toàn bộ nội dung hiện tại, kèm danh sách tóm tắt dễ đọc tất cả link ảnh đã thêm (tuyến nào, ô thứ mấy, link gì). Dùng để tự sao lưu — nếu sau này cần reset dữ liệu trên Supabase (ví dụ khi đổi cấu trúc lưu trữ), bạn vẫn có file này làm bằng chứng/tham khảo để nhập lại thủ công.
 - Ai mở lại trang (kể cả người khác) sau khi reload sẽ thấy đúng bản đã lưu gần nhất.
 - Không cần đăng nhập — bất kỳ ai có link đều sửa được (theo lựa chọn bạn đã chọn). Xem mục "Lưu ý bảo mật" bên dưới.
 

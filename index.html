@@ -961,6 +961,7 @@
 <div class="edit-toolbar" id="edit-toolbar">
   <button type="button" id="btn-edit-toggle">✏️ Bật chế độ chỉnh sửa</button>
   <button type="button" id="btn-history">🕘 Lịch sử</button>
+  <button type="button" id="btn-export">📥 Xuất dữ liệu</button>
   <button type="button" id="btn-save" style="display:none">💾 Lưu thay đổi</button>
   <span class="edit-status" id="edit-status">Đang tải…</span>
 </div>
@@ -1004,6 +1005,7 @@
   var btnToggle = document.getElementById('btn-edit-toggle');
   var btnSave = document.getElementById('btn-save');
   var btnHistory = document.getElementById('btn-history');
+  var btnExport = document.getElementById('btn-export');
   var statusEl = document.getElementById('edit-status');
   var historyOverlay = document.getElementById('history-overlay');
   var historyList = document.getElementById('history-list');
@@ -1130,6 +1132,47 @@
         } else {
           setStatus('Chưa có chỉnh sửa nào — đang xem bản gốc.');
         }
+      });
+  }
+
+  function exportData(){
+    if (!client) { setStatus('Chưa cấu hình Supabase — không có gì để xuất.'); return; }
+    setStatus('Đang chuẩn bị file xuất…');
+    client.from('page_content').select('content, updated_at').eq('page_id', PAGE_ID).maybeSingle()
+      .then(function(res){
+        if (res.error || !res.data) { setStatus('Không tải được dữ liệu để xuất: ' + (res.error ? res.error.message : 'không có dữ liệu')); return; }
+        var content = res.data.content || {};
+        var imageLinks = [];
+        var libHeads = Array.from(document.querySelectorAll('.lib-head'));
+        libHeads.forEach(function(h){
+          var badge = h.querySelector('.lib-badge').textContent;
+          var name = h.querySelector('h3').textContent;
+          var grid = h.nextElementSibling;
+          var gridEid = grid.getAttribute('data-eid');
+          var rec = content[gridEid];
+          if (rec && Array.isArray(rec.cards)) {
+            rec.cards.forEach(function(card, idx){
+              imageLinks.push({ tuyen: badge, ten: name, o_thu: idx + 1, link_anh: (card && card.src) || null });
+            });
+          }
+        });
+        var exportObj = {
+          xuat_luc: new Date().toISOString(),
+          cap_nhat_gan_nhat: res.data.updated_at,
+          danh_sach_link_anh: imageLinks,
+          du_lieu_day_du: content
+        };
+        var blob = new Blob([JSON.stringify(exportObj, null, 2)], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        var dateStr = new Date().toISOString().slice(0, 10);
+        a.href = url;
+        a.download = 'bbcincorp-guideline-backup-' + dateStr + '.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+        setStatus('Đã tải file backup về máy.');
       });
   }
 
@@ -1329,6 +1372,7 @@
     setEditMode(!document.body.classList.contains('edit-mode'));
   });
   btnSave.addEventListener('click', saveContent);
+  btnExport.addEventListener('click', exportData);
 
   btnHistory.addEventListener('click', openHistory);
   btnHistoryClose.addEventListener('click', closeHistory);
