@@ -267,9 +267,9 @@
   .glabel{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
   .glabel .badge{background:#e8f0ff;color:var(--blue);padding:2px 8px;border-radius:20px;margin-left:6px;font-size:10px;letter-spacing:.4px;}
   .canva-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-  .cv-shot{position:relative;display:block;aspect-ratio:1/1;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--navy);transition:transform .15s,box-shadow .15s;}
+  .cv-shot{position:relative;display:block;aspect-ratio:1/1;min-width:0;min-height:0;max-width:100%;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--navy);transition:transform .15s,box-shadow .15s;}
   .cv-shot:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(13,27,42,.18);}
-  .cv-shot img{width:100%;height:100%;object-fit:cover;display:block;}
+  .cv-shot img{width:100%;height:100%;min-width:0;min-height:0;max-width:100%;object-fit:cover;display:block;}
   .cv-shot .cv-n{position:absolute;top:8px;left:10px;z-index:3;background:rgba(13,27,42,.72);color:#fff;font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;letter-spacing:.5px;}
   .cv-fallback{display:none;position:absolute;inset:0;flex-direction:column;gap:6px;align-items:center;justify-content:center;text-align:center;padding:14px;color:#bfeede;font-size:11px;font-weight:700;line-height:1.45;}
   .cv-broken .cv-fallback{display:flex;}
@@ -284,7 +284,8 @@
   .lib-head h3{margin:0;font-size:16.5px;color:var(--navy);}
   .lib-head .meta{margin-left:auto;font-size:11.5px;color:var(--muted);font-weight:600;text-align:right;}
   .lib-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-  .lib-empty{border:1.5px dashed #cfd6df;border-radius:10px;aspect-ratio:1/1;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:11px;font-weight:600;padding:12px;background:#fafbfc;}
+  .canva-grid > *, .lib-grid > *{min-width:0;min-height:0;}
+  .lib-empty{border:1.5px dashed #cfd6df;border-radius:10px;aspect-ratio:1/1;min-width:0;min-height:0;max-width:100%;display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;text-align:center;color:var(--muted);font-size:11px;font-weight:600;padding:12px;background:#fafbfc;}
   .lib-empty .pa{font-size:18px;opacity:.5;}
   @media (max-width:560px){.lib-grid{grid-template-columns:repeat(2,1fr);}}
 
