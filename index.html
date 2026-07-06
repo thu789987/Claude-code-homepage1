@@ -1262,6 +1262,15 @@
     if (hexLabel) hexLabel.textContent = colorInput.value.toUpperCase();
   });
 
+  // ----- chặn dán ảnh/rich content vào vùng chữ, chỉ cho dán chữ thuần -----
+  document.addEventListener('paste', function(e){
+    var el = e.target.closest('.et-text');
+    if (!el || !document.body.classList.contains('edit-mode')) return;
+    e.preventDefault();
+    var text = (e.clipboardData || window.clipboardData).getData('text/plain');
+    document.execCommand('insertText', false, text);
+  });
+
   // ----- thêm / xoá / đổi link ô ảnh -----
   document.addEventListener('click', function(e){
     if (!document.body.classList.contains('edit-mode')) {
