@@ -259,6 +259,14 @@
   .m7 .who b{color:#fff;}
   .m7 .logo{color:#fff;margin-top:auto;padding-top:18px;}
 
+  /* M8 Performance report */
+  .m8{background:linear-gradient(135deg,#f4f7fb 0%,#e8f0ff 100%);padding:26px 24px;justify-content:center;position:relative;}
+  .m8 .label{font-size:10px;font-weight:800;letter-spacing:1.4px;color:var(--muted);text-transform:uppercase;margin-bottom:12px;}
+  .m8 .num{font-size:56px;font-weight:900;color:var(--blue);line-height:1;letter-spacing:-1px;margin-bottom:8px;}
+  .m8 .desc{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:16px;line-height:1.35;}
+  .m8 .growth{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--teal);font-weight:700;}
+  .m8 .logo{color:var(--navy);margin-top:20px;}
+
   .sub{border:1px solid var(--line);border-radius:11px;padding:14px 18px;margin:12px 0;background:#fafbfc;}
   .sub .tag{font-weight:700;color:var(--blue);font-size:14px;}
 
@@ -966,19 +974,12 @@
       <div class="track-body">
         <div class="mockup-col">
           <div class="mock-label">Demo mockup · metrics card</div>
-          <div class="post m8" style="background:linear-gradient(135deg,#f4f7fb 0%,#e8f0ff 100%);padding:24px;justify-content:center;position:relative;">
-            <div style="text-align:center;position:relative;z-index:2;">
-              <div style="font-size:11px;font-weight:800;letter-spacing:1.4px;color:#5b6876;text-transform:uppercase;margin-bottom:12px;">Q2 2025 Performance</div>
-              <div style="font-size:48px;font-weight:900;color:#0B3D8A;line-height:1;letter-spacing:-1px;margin-bottom:6px;">2,847</div>
-              <div style="font-size:14px;font-weight:600;color:#1c2733;margin-bottom:18px;">Companies incorporated this quarter</div>
-              <div style="display:flex;align-items:center;justify-content:center;gap:8px;font-size:12px;color:#00C9A7;font-weight:700;">
-                <span>↑ 34% growth YoY</span>
-              </div>
-              <div style="margin-top:20px;display:flex;align-items:center;justify-content:center;gap:4px;">
-                <span class="dot" style="width:6px;height:6px;border-radius:50%;background:#0B3D8A;display:inline-block;"></span>
-                <span style="color:#1c2733;font-size:11px;">BBCIncorp</span>
-              </div>
-            </div>
+          <div class="post m8">
+            <div class="label">Q2 2025 Performance</div>
+            <div class="num">2,847</div>
+            <div class="desc">Companies incorporated this quarter</div>
+            <div class="growth"><span>↑ 34% growth YoY</span></div>
+            <div class="logo"><span class="dot"></span>BBCIncorp</div>
           </div>
         </div>
         <div class="content-col">
